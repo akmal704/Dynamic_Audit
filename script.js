@@ -34,6 +34,7 @@ const T = {
     svc4_desc: "Preparing for a Big 4 audit or due diligence? We act as your internal team — liaising with the auditors, preparing workpapers, and ensuring your books are Big 4-ready before fieldwork begins.",
     svc4_b1: "Pre-audit readiness review", svc4_b2: "PBC list management",
     svc4_b3: "IFRS conversion support",    svc4_b4: "Due diligence preparation",
+    svc_learn_more: "Learn more →",
     /* about */
     about_label: "Who We Are",
     about_title: "Big 4 Methodology.<br><span>Local Market Mastery.</span>",
@@ -182,6 +183,7 @@ const T = {
     svc4_desc: "Готовитесь к аудиту Big 4 или due diligence? Мы выступаем вашей внутренней командой — взаимодействуем с аудиторами, готовим рабочие материалы и приводим учёт в готовность.",
     svc4_b1: "Проверка готовности к аудиту", svc4_b2: "Управление списком PBC",
     svc4_b3: "Поддержка конвертации в МСФО", svc4_b4: "Подготовка к due diligence",
+    svc_learn_more: "Подробнее →",
     /* about */
     about_label: "Кто мы",
     about_title: "Методология Big 4.<br><span>Знание местного рынка.</span>",
@@ -330,6 +332,7 @@ const T = {
     svc4_desc: "Big 4 auditi yoki due diligence'ga tayyorlanayapsizmi? Biz sizning ichki jamoangiz sifatida harakat qilamiz — auditorlar bilan muloqot qilib, ish hujjatlarini tayyorlaymiz.",
     svc4_b1: "Auditga tayyorlikni tekshirish", svc4_b2: "PBC ro'yxatini boshqarish",
     svc4_b3: "IFRS konvertatsiyasini qo'llab-quvvatlash", svc4_b4: "Due diligence'ga tayyorgarlik",
+    svc_learn_more: "Batafsil →",
     /* about */
     about_label: "Biz haqimizda",
     about_title: "Big 4 Metodologiyasi.<br><span>Mahalliy Bozorni Bilish.</span>",
@@ -512,8 +515,8 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLang(currentLang);
 
   /* form submit handlers */
-  handleFormSubmit('form-general', 'https://formspree.io/f/YOUR_FORM_ID');
-  handleFormSubmit('form-audit',   'https://formspree.io/f/YOUR_AUDIT_FORM_ID');
+  handleFormSubmit('form-general', 'https://formspree.io/f/mzdqrkne');
+  handleFormSubmit('form-audit',   'https://formspree.io/f/xbdeopnq');
 });
 
 /* ── Contact tabs ──────────────────────────────────────────── */

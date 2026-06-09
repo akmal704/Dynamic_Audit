@@ -437,6 +437,21 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
   padding-left: 1.1rem;
   position: relative;
 }
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: gap 0.2s;
+}
+.service-card-link:hover {
+  gap: 0.55rem;
+}
 .service-bullets li::before {
   content: '';
   position: absolute;
