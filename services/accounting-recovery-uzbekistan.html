@@ -327,7 +327,8 @@
 </footer>
 
 <script>
-  function setSvcLang(lang,btn){document.body.setAttribute('data-lang',lang);document.querySelectorAll('.svc-lang-btn,.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('[onclick*="setSvcLang(\''+lang+'\'"]').forEach(b=>b.classList.add('active'));}
+  function setSvcLang(lang,btn){document.body.setAttribute('data-lang',lang);localStorage.setItem('da-lang',lang);document.querySelectorAll('.svc-lang-btn,.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('[onclick*="setSvcLang(\''+lang+'\'"]').forEach(b=>b.classList.add('active'));}
+  (function(){const l=localStorage.getItem('da-lang');if(l&&l!=='en')setSvcLang(l);})();
   function toggleFaq(btn){btn.closest('.faq-item').classList.toggle('open');}
   window.addEventListener('scroll',()=>{document.getElementById('site-nav').classList.toggle('scrolled',window.scrollY>40);});
 </script>

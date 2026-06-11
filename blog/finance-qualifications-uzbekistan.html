@@ -1197,9 +1197,11 @@
 <script>
   function setBlogLang(lang, btn) {
     document.body.setAttribute('data-lang', lang);
+    localStorage.setItem('da-lang', lang);
     document.querySelectorAll('.blog-lang-btn, .lang-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('[onclick*="setBlogLang(\'' + lang + '\'"]').forEach(b => b.classList.add('active'));
   }
+  (function(){const l=localStorage.getItem('da-lang');if(l&&l!=='en')setBlogLang(l);})();
 
   // Nav scroll effect
   window.addEventListener('scroll', () => {
