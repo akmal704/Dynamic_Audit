@@ -57,7 +57,7 @@ const T = {
     /* team */
     team_label: "The Founders", team_title: "Big 4 Pedigree.<br><span>Personal Commitment.</span>",
     team_sub: "Two professionals who built careers at the top of the industry, then chose to start their own firm.",
-    ag_name: "Akmalbek Gaybullaev", ag_role: "Co-Founder &amp; Managing Partner", ag_firm: "Former EY Senior Auditor",
+    ag_name: "Akmalbek Gaybullaev", ag_role: "Co-Founder &amp; Partner", ag_firm: "Former EY Senior Auditor",
     ag_bio: "Akmalbek holds a degree from the University of Sussex (UK) and is an ACCA member — a globally recognised professional accounting qualification. Akmal built his career at Deloitte and Ernst &amp; Young, where he led audit engagements for major clients across energy, commodities, and financial services. With deep expertise in IFRS reporting, ISA compliance, and multi-jurisdictional audit work, he co-founded Dynamic Audit to offer the same institutional rigour at a scale accessible to local businesses.",
     ag_h1: "EY audit engagements — energy &amp; commodities",
     ag_h2: "Deloitte audits — banking, agriculture &amp; trade",
@@ -207,7 +207,7 @@ const T = {
     /* team */
     team_label: "Основатели", team_title: "Опыт Big 4.<br><span>Личная вовлечённость.</span>",
     team_sub: "Два специалиста, построившие карьеру на вершине отрасли и решившие основать собственную фирму.",
-    ag_name: "Акмалбек Гайбуллаев", ag_role: "Сооснователь и управляющий партнёр", ag_firm: "Бывший старший аудитор EY",
+    ag_name: "Акмалбек Гайбуллаев", ag_role: "Сооснователь и партнёр", ag_firm: "Бывший старший аудитор EY",
     ag_bio: "Акмалбек окончил Университет Сассекса (Великобритания) и является членом ACCA — всемирно признанной профессиональной квалификации. Он построил карьеру в Deloitte и Ernst &amp; Young, где руководил аудиторскими проектами для крупных клиентов в энергетике, сырьевом секторе и финансовых услугах. Обладая глубокой экспертизой в области МСФО, МСА и многоюрисдикционного аудита, он стал сооснователем Dynamic Audit, чтобы предложить тот же уровень профессионализма местному бизнесу.",
     ag_h1: "Аудит в EY — энергетика и сырьё",
     ag_h2: "Аудит в Deloitte — банковский сектор, сельское хозяйство и торговля",
@@ -357,7 +357,7 @@ const T = {
     /* team */
     team_label: "Asoschilari", team_title: "Big 4 Tajribasi.<br><span>Shaxsiy Mas'uliyat.</span>",
     team_sub: "Sohaning yuqori qismida karyera qurgan, so'ng o'z firmalarini ochishni tanlagan ikki mutaxassis.",
-    ag_name: "Akmalbek Gaybullaev", ag_role: "Hamtaassis va Boshqaruvchi Hamkor", ag_firm: "Sobiq EY Katta Auditori",
+    ag_name: "Akmalbek Gaybullaev", ag_role: "Hamtaassis va Hamkor", ag_firm: "Sobiq EY Katta Auditori",
     ag_bio: "Akmalbek Sussex Universiteti (Buyuk Britaniya) bitiruvchisi va ACCA a'zosi — xalqaro miqyosda tan olingan professional buxgalteriya malakasi. U Deloitte va Ernst &amp; Young'da energetika, tovar va moliyaviy xizmatlar bo'yicha yirik mijozlar uchun audit loyihalarini boshqargan. IFRS hisoboti, ISA va ko'p yurisdiktsiyali audit bo'yicha chuqur bilimga ega bo'lib, mahalliy biznesga xuddi shu darajadagi professionallikni taqdim etish uchun Dynamic Auditni asos solgan.",
     ag_h1: "EY audit loyihalari — energetika va tovarlar",
     ag_h2: "Deloitte audit loyihalari — bank, qishloq xo'jaligi va savdo",
