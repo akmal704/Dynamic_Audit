@@ -4,6 +4,7 @@ const T = {
     /* nav */
     nav_services: "Services", nav_about: "About", nav_team: "Team",
     nav_credentials: "Credentials", nav_portfolio: "Clients", nav_contact: "Contact",
+    nav_insights: "Insights",
     /* hero */
     hero_badge: "Founded by Big 4 Alumni",
     hero_title: "Big 4 Quality.<br><span>Local Precision.</span>",
@@ -153,6 +154,7 @@ const T = {
     /* nav */
     nav_services: "Услуги", nav_about: "О нас", nav_team: "Команда",
     nav_credentials: "Сертификаты", nav_portfolio: "Клиенты", nav_contact: "Контакты",
+    nav_insights: "Аналитика",
     /* hero */
     hero_badge: "Основана выпускниками Большой четвёрки",
     hero_title: "Качество Big 4.<br><span>Местная точность.</span>",
@@ -302,6 +304,7 @@ const T = {
     /* nav */
     nav_services: "Xizmatlar", nav_about: "Biz haqimizda", nav_team: "Jamoa",
     nav_credentials: "Sertifikatlar", nav_portfolio: "Mijozlar", nav_contact: "Aloqa",
+    nav_insights: "Tahlillar",
     /* hero */
     hero_badge: "Big 4 Bitiruvchilari Tomonidan Asos Solingan",
     hero_title: "Big 4 Sifati.<br><span>Mahalliy Aniqlik.</span>",
