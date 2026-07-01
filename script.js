@@ -38,7 +38,7 @@ const T = {
     svc5_title: "Accounting Outsourcing",
     svc5_desc: "Full-service bookkeeping and tax compliance in Uzbekistan — with built-in tax optimisation and proactive guidance on changing tax legislation.",
     svc5_b1: "NSBA bookkeeping in 1C", svc5_b2: "VAT &amp; tax filings",
-    svc5_b3: "Tax optimisation advisory", svc5_b4: "Annual Хисобот / Hisоbot",
+    svc5_b3: "Tax optimisation advisory", svc5_b4: "Annual Reporting",
     svc_learn_more: "Learn more →",
     /* about */
     about_label: "Who We Are",
@@ -191,8 +191,8 @@ const T = {
     svc4_b3: "Поддержка конвертации в МСФО", svc4_b4: "Подготовка к due diligence",
     svc5_title: "Аутсорсинг бухгалтерии",
     svc5_desc: "Полный бухгалтерский учёт и налоговое сопровождение в Узбекистане — с встроенной налоговой оптимизацией и проактивным сопровождением в условиях меняющегося налогового законодательства.",
-    svc5_b1: "Ведение учёта по НСБУ в 1С", svc5_b2: "НДС (QQS) и налоговые декларации",
-    svc5_b3: "Консультации по налоговой оптимизации", svc5_b4: "Годовая отчётность (Хисобот)",
+    svc5_b1: "Ведение учёта по НСБУ в 1С", svc5_b2: "НДС и налоговые декларации",
+    svc5_b3: "Консультации по налоговой оптимизации", svc5_b4: "Годовая отчётность",
     svc_learn_more: "Подробнее →",
     /* about */
     about_label: "Кто мы",
@@ -345,7 +345,7 @@ const T = {
     svc4_b3: "IFRS konvertatsiyasini qo'llab-quvvatlash", svc4_b4: "Due diligence'ga tayyorgarlik",
     svc5_title: "Buxgalteriya Autsorsingi",
     svc5_desc: "O'zbekistonda to'liq buxgalteriya xizmati va soliq muvofiqligini ta'minlash — soliq optimizatsiyasi va o'zgaruvchan soliq qonunchiligi bo'yicha proaktiv yo'naltirish bilan.",
-    svc5_b1: "1C da NSBU bo'yicha buxgalteriya", svc5_b2: "QQS va soliq hisobotlari",
+    svc5_b1: "BHMS bo'yicha buxgalteriya", svc5_b2: "QQS va soliq hisobotlari",
     svc5_b3: "Soliq optimizatsiyasi bo'yicha maslahat", svc5_b4: "Yillik Hisоbot",
     svc_learn_more: "Batafsil →",
     /* about */
