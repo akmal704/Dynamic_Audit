@@ -37,7 +37,7 @@ const T = {
     svc4_b3: "IFRS conversion support",    svc4_b4: "Due diligence preparation",
     svc5_title: "Accounting Outsourcing",
     svc5_desc: "Full-service bookkeeping and tax compliance in Uzbekistan — with built-in tax optimisation and proactive guidance on changing tax legislation.",
-    svc5_b1: "NSBA bookkeeping in 1C", svc5_b2: "VAT &amp; tax filings",
+    svc5_b1: "Uz-GAAP bookkeeping in 1C", svc5_b2: "VAT &amp; tax filings",
     svc5_b3: "Tax optimisation advisory", svc5_b4: "Annual Reporting",
     svc_learn_more: "Learn more →",
     /* about */
