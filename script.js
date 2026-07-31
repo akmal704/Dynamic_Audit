@@ -465,7 +465,19 @@ const T = {
 };
 
 /* ── Language switcher ─────────────────────────────────────── */
-let currentLang = localStorage.getItem('da-lang') || 'en';
+/* Each language has its own URL (/, /ru/, /uz/). window.__PAGE_LANG is set
+   inline on the generated language pages; the English root defaults to 'en'. */
+let currentLang = window.__PAGE_LANG || 'en';
+
+/* Navigate to the equivalent page in another language instead of swapping
+   text in place — keeps one canonical URL per language for search engines. */
+function daSwitchLang(lang) {
+  let p = location.pathname.replace(/^\/(ru|uz)(?=\/|$)/, '');
+  if (p === '') p = '/';
+  let target = (lang === 'en') ? p : ('/' + lang + p);
+  target = target.replace(/\/{2,}/g, '/');
+  location.href = target + location.hash;
+}
 
 function applyLang(lang) {
   currentLang = lang;
@@ -493,9 +505,9 @@ function applyLang(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* language buttons */
+  /* language buttons navigate to the language-specific URL */
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    btn.addEventListener('click', () => daSwitchLang(btn.dataset.lang));
   });
 
   /* hamburger */

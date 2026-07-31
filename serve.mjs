@@ -22,7 +22,11 @@ const MIME = {
 };
 
 http.createServer((req, res) => {
-  let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
+  let urlPath = decodeURIComponent(req.url.split('?')[0]);
+  // Resolve directory requests (e.g. /ru/) to index.html, matching Netlify.
+  if (urlPath === '/' || urlPath.endsWith('/')) urlPath += 'index.html';
+  else if (path.extname(urlPath) === '') urlPath += '/index.html';
+  let filePath = path.join(__dirname, urlPath);
   const ext = path.extname(filePath);
   fs.readFile(filePath, (err, data) => {
     if (err) { res.writeHead(404); res.end('Not found'); return; }
