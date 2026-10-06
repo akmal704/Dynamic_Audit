@@ -38,7 +38,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,100..151,400..800&family=Golos+Text:wght@400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
   <style>
     /* ── Blog-specific styles ─────────────────────────── */
@@ -59,7 +59,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 75% 50%, rgba(201,165,87,0.08) 0%, transparent 60%);
+      background: radial-gradient(circle at 75% 50%, rgba(46,124,246,0.08) 0%, transparent 60%);
       pointer-events: none;
     }
     .blog-breadcrumb {
@@ -81,14 +81,14 @@
       margin-bottom: 1rem;
     }
     .blog-hero-title {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--f-display);
       font-size: clamp(1.75rem, 3.8vw, 2.9rem);
       color: #fff;
       line-height: 1.2;
       max-width: 780px;
       margin-bottom: 1.5rem;
     }
-    .blog-hero-title span { color: var(--gold); }
+    .blog-hero-title span { color: var(--silver); }
     .blog-meta {
       display: flex;
       align-items: center;
@@ -118,17 +118,17 @@
 
     /* Article content */
     .blog-content h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--f-display);
       font-size: 1.55rem;
       color: var(--navy);
       margin: 2.75rem 0 1rem;
       padding-bottom: 0.6rem;
-      border-bottom: 2px solid rgba(201,165,87,0.2);
+      border-bottom: 2px solid rgba(46,124,246,0.2);
       scroll-margin-top: 88px;
     }
     .blog-content > h2:first-child { margin-top: 0; }
     .blog-content h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--f-display);
       font-size: 1.1rem;
       color: var(--navy);
       margin: 1.5rem 0 0.5rem;
@@ -211,12 +211,12 @@
     }
     .qual-table thead th:first-child { color: var(--gold); }
     .qual-table tbody tr { border-bottom: 1px solid var(--paper); transition: background 0.2s; }
-    .qual-table tbody tr:hover { background: rgba(201,165,87,0.05); }
+    .qual-table tbody tr:hover { background: rgba(46,124,246,0.05); }
     .qual-table tbody tr:last-child { border-bottom: none; }
     .qual-table td { padding: 0.8rem 1rem; vertical-align: middle; color: var(--text-muted); }
     .qual-table td:first-child { font-weight: 700; color: var(--navy); white-space: nowrap; }
     .qual-table td a { color: var(--gold); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-    .qual-table td a:hover { color: #b8932e; }
+    .qual-table td a:hover { color: #1E63D6; }
     .diff-badge {
       display: inline-block;
       padding: 0.18rem 0.55rem;
@@ -224,7 +224,7 @@
       font-size: 0.7rem;
       font-weight: 700;
     }
-    .diff-medium  { background: rgba(201,165,87,0.15); color: #7a5800; }
+    .diff-medium  { background: rgba(46,124,246,0.15); color: #7a5800; }
     .diff-high    { background: rgba(200,80,80,0.12);  color: #8a1a1a; }
     .diff-vhigh   { background: rgba(140,30,30,0.15);  color: #6a0000; }
 
@@ -255,7 +255,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Playfair Display', serif;
+      font-family: var(--f-display);
       font-size: 0.75rem;
       font-weight: 700;
       color: var(--gold);
@@ -273,7 +273,7 @@
     .qual-fullname {
       font-size: 0.8rem;
       color: var(--text-muted);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: var(--f-body);
       font-weight: 500;
     }
     .qual-stats {
@@ -309,7 +309,7 @@
     .qual-career-tag {
       display: inline-block;
       padding: 0.22rem 0.65rem;
-      background: rgba(201,165,87,0.12);
+      background: rgba(46,124,246,0.12);
       border-radius: 100px;
       font-size: 0.73rem;
       font-weight: 600;
@@ -326,7 +326,7 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
-    .qual-link:hover { color: #b8932e; }
+    .qual-link:hover { color: #1E63D6; }
 
     /* Career paths */
     .career-grid { display: grid; gap: 0.65rem; margin: 1.25rem 0; }
@@ -370,12 +370,12 @@
       top: -40px; right: -40px;
       width: 200px; height: 200px;
       border-radius: 50%;
-      background: rgba(201,165,87,0.07);
+      background: rgba(46,124,246,0.07);
       pointer-events: none;
     }
     .blog-cta-box .section-label { margin-bottom: 0.65rem; }
     .blog-cta-box h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--f-display);
       font-size: 1.5rem;
       color: white;
       margin-bottom: 0.75rem;
@@ -393,7 +393,7 @@
       margin-bottom: 1.25rem;
     }
     .sidebar-card h4 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--f-display);
       font-size: 0.95rem;
       color: var(--navy);
       margin-bottom: 0.9rem;
@@ -411,7 +411,7 @@
       gap: 0.4rem;
       transition: all 0.2s;
     }
-    .toc-list a:hover { background: rgba(201,165,87,0.1); color: var(--navy); }
+    .toc-list a:hover { background: rgba(46,124,246,0.1); color: var(--navy); }
     .toc-list a::before {
       content: '';
       width: 4px; height: 4px;

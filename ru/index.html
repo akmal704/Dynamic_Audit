@@ -104,7 +104,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,100..151,400..800&family=Golos+Text:wght@400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
@@ -177,34 +177,28 @@
       </div>
     </div>
 
-    <div class="hero-card-wrap" aria-hidden="true">
-      <div class="hero-card">
-        <div class="hero-card-logo">
-          <img src="/brand_assets/IMG_8910(1) (1).png" alt="Dynamic Audit" />
-        </div>
-        <div class="hero-card-divider"></div>
-        <div class="hero-card-stats">
-          <div class="hero-stat">
-            <span class="hero-stat-num">24+</span>
-            <span class="hero-stat-lbl" data-i18n="hstat1">Аудитов по МСФО</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-num">$100K+</span>
-            <span class="hero-stat-lbl" data-i18n="hstat2">Экономия клиентов</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-num">10+</span>
-            <span class="hero-stat-lbl" data-i18n="hstat3">Лет опыта</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-num">2</span>
-            <span class="hero-stat-lbl" data-i18n="hstat4">Основатели Big 4</span>
-          </div>
-        </div>
-        <div class="hero-card-tag" data-i18n="hero_card_tag">Лицензированная аудиторская компания · Ташкент, Узбекистан</div>
+    <!-- Signature: an illustrative audit working paper, ticked line by line -->
+    <figure class="wp" aria-hidden="true">
+      <div class="wp-head"><span data-i18n="wp_ref">Рабочий документ B-100</span><span data-i18n="wp_status">Подготовлено · Проверено</span></div>
+      <div class="wp-title" data-i18n="wp_title">Отчёт о финансовом положении</div>
+      <div class="wp-unit" data-i18n="wp_unit">Выдержка · млн сум · на 31.12.2025</div>
+      <table>
+        <tr><td data-i18n="wp_cash">Денежные средства и их эквиваленты</td><td class="num">4,812</td><td class="tick"><span class="tm" style="animation-delay:.5s">✓</span></td></tr>
+        <tr><td data-i18n="wp_recv">Торговая дебиторская задолженность</td><td class="num">12,406</td><td class="tick"><span class="tm" style="animation-delay:.8s">C</span></td></tr>
+        <tr><td data-i18n="wp_inv">Запасы</td><td class="num">9,155</td><td class="tick"><span class="tm" style="animation-delay:1.1s">O</span></td></tr>
+        <tr><td data-i18n="wp_ppe">Основные средства</td><td class="num">31,720</td><td class="tick"><span class="tm" style="animation-delay:1.4s">V</span></td></tr>
+        <tr class="total"><td data-i18n="wp_total">Итого активы</td><td class="num">58,093</td><td class="tick"><span class="tm sigma" style="animation-delay:1.75s">Σ</span></td></tr>
+      </table>
+      <div class="wp-legend">
+        <span><b>✓</b><span data-i18n="wp_l1">Сверено с подтверждением банка</span></span>
+        <span><b>C</b><span data-i18n="wp_l2">Подтверждено дебитором</span></span>
+        <span><b>O</b><span data-i18n="wp_l3">Проверено при инвентаризации</span></span>
+        <span><b>V</b><span data-i18n="wp_l4">Сверено с первичными документами</span></span>
+        <span><b class="k">Σ</b><span data-i18n="wp_l5">Арифметическая проверка</span></span>
       </div>
-      <div class="hero-card-glow" aria-hidden="true"></div>
-    </div>
+      <div class="wp-sign" data-i18n="wp_sign">Подпись партнёра</div>
+      <figcaption class="wp-note" data-i18n="wp_note">Цифры условные</figcaption>
+    </figure>
 
   </div>
   <div class="hero-scroll-hint">
