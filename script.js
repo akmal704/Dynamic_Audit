@@ -55,6 +55,10 @@ const T = {
     svc5_desc: "Full-service bookkeeping and tax compliance in Uzbekistan — with built-in tax optimisation and proactive guidance on changing tax legislation.",
     svc5_b1: "Uz-GAAP bookkeeping in 1C", svc5_b2: "VAT &amp; tax filings",
     svc5_b3: "Tax optimisation advisory", svc5_b4: "Annual Reporting",
+    svc6_title: "Tax Advisory",
+    svc6_desc: "Tax compliance and advice for companies in Uzbekistan — returns filed correctly and on time, and no more tax than the law requires.",
+    svc6_b1: "VAT, profit & payroll tax filings", svc6_b2: "Tax & VAT registration",
+    svc6_b3: "Withholding tax & double tax treaties", svc6_b4: "Free 30-minute consultation",
     svc_learn_more: "Learn more →",
     /* about */
     about_label: "Who We Are",
@@ -225,6 +229,10 @@ const T = {
     svc5_desc: "Полный бухгалтерский учёт и налоговое сопровождение в Узбекистане — с встроенной налоговой оптимизацией и проактивным сопровождением в условиях меняющегося налогового законодательства.",
     svc5_b1: "Ведение учёта по НСБУ в 1С", svc5_b2: "НДС и налоговые декларации",
     svc5_b3: "Консультации по налоговой оптимизации", svc5_b4: "Годовая отчётность",
+    svc6_title: "Налоговый консалтинг",
+    svc6_desc: "Налоговое сопровождение и консультации для компаний в Узбекистане — отчётность правильно и в срок, и не больше налогов, чем требует закон.",
+    svc6_b1: "Декларации по НДС, налогу на прибыль и ФОТ", svc6_b2: "Постановка на учёт и регистрация по НДС",
+    svc6_b3: "Налог у источника и международные соглашения", svc6_b4: "Бесплатная консультация 30 минут",
     svc_learn_more: "Подробнее →",
     /* about */
     about_label: "Кто мы",
@@ -395,6 +403,10 @@ const T = {
     svc5_desc: "O'zbekistonda to'liq buxgalteriya xizmati va soliq muvofiqligini ta'minlash — soliq optimizatsiyasi va o'zgaruvchan soliq qonunchiligi bo'yicha proaktiv yo'naltirish bilan.",
     svc5_b1: "BHMS bo'yicha buxgalteriya", svc5_b2: "QQS va soliq hisobotlari",
     svc5_b3: "Soliq optimizatsiyasi bo'yicha maslahat", svc5_b4: "Yillik Hisоbot",
+    svc6_title: "Soliq maslahati",
+    svc6_desc: "O'zbekistondagi kompaniyalar uchun soliq hisobotlari va maslahat — hisobotlar to'g'ri va o'z vaqtida, qonun talab qilganidan ortiq soliqsiz.",
+    svc6_b1: "QQS, foyda va ish haqi soliqlari hisobotlari", svc6_b2: "Soliq va QQS bo'yicha ro'yxatdan o'tish",
+    svc6_b3: "To'lov manbaidan soliq va xalqaro bitimlar", svc6_b4: "Bepul 30 daqiqalik maslahat",
     svc_learn_more: "Batafsil →",
     /* about */
     about_label: "Biz haqimizda",

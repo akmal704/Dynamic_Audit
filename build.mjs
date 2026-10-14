@@ -133,6 +133,24 @@ const META = {
       kw: 'buxgalteriya hisobini tiklash, hisobni tiklash Oʻzbekiston, hisobni tiklash Toshkent, hisob xatolarini tuzatish, 1C sozlash, soliq risklarini bartaraf etish, auditga tayyorgarlik',
     },
   },
+  'services/tax-advisory-uzbekistan.html': {
+    canon: '/services/tax-advisory-uzbekistan.html',
+    en: {
+      title: 'Tax Advisory & Compliance in Uzbekistan | Dynamic Audit',
+      desc: 'Tax compliance and tax advisory in Uzbekistan: VAT, profit tax and payroll filings, tax registration and lawful tax optimisation. Free 30-minute consultation.',
+      kw: 'tax services Uzbekistan, tax advisory Uzbekistan, tax compliance Uzbekistan, tax consultant Tashkent, tax advisor Uzbekistan, VAT Uzbekistan, tax registration Uzbekistan, withholding tax Uzbekistan, double tax treaty Uzbekistan, tax optimisation',
+    },
+    ru: {
+      title: 'Налоговый консалтинг в Узбекистане | Dynamic Audit',
+      desc: 'Налоговое сопровождение и консалтинг в Узбекистане: НДС, налог на прибыль, налоги с ФОТ, постановка на учёт и законная налоговая оптимизация. Бесплатная консультация.',
+      kw: 'налоговый консалтинг Узбекистан, налоговая консультация Ташкент, налоговое сопровождение, налоговый консультант, налоговая отчётность Узбекистан, НДС Узбекистан, налоговая оптимизация, налог у источника, избежание двойного налогообложения',
+    },
+    uz: {
+      title: 'Oʻzbekistonda soliq maslahati | Dynamic Audit',
+      desc: 'Oʻzbekistonda soliq hisobotlari va soliq maslahati: QQS, foyda soligʻi, ish haqi soliqlari, roʻyxatdan oʻtish va qonuniy soliq optimallashtirish. Bepul maslahat.',
+      kw: 'soliq maslahati, soliq konsultatsiya, soliq maslahatchisi Toshkent, soliq hisobotlari, QQS Oʻzbekiston, soliq optimallashtirish, soliq xizmatlari Oʻzbekiston',
+    },
+  },
   'services/cfo-outsourcing-tashkent.html': {
     canon: '/services/cfo-outsourcing-tashkent.html',
     en: {

@@ -922,3 +922,12 @@ h1, h2, h3, h4 {
   *, *::before, *::after { animation-duration: .001s !important; animation-delay: 0s !important; transition-duration: .001s !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ── Service pages (shared fixes for their inline layout) ──── */
+/* Let the article column shrink below its content width and let the
+   language bar wrap, so phones never get a sideways scroll. */
+.svc-layout > * { min-width: 0; }
+.svc-lang-bar { flex-wrap: wrap; }
+/* Same for the blog: its comparison table scrolls inside .qual-table-wrap
+   instead of stretching the article wider than the phone. */
+.blog-layout > * { min-width: 0; }
