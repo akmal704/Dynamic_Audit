@@ -1,2 +1,5 @@
 .claude/
 temporary screenshots/
+
+# Article drafts/translation sources (not part of the site)
+blog/*.md

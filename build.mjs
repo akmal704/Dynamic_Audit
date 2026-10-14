@@ -327,6 +327,28 @@ const BLOG_POSTS = [
       desc: "O'zbekiston mutaxassislari uchun ACCA, CFA, CIMA, DipIFR, CIA, CPA va FRM bo'yicha qo'llanma: karyera imkoniyatlari, imtihonlar tuzilmasi va tayyorgarlik.",
     },
   },
+  {
+    path: 'blog/what-is-an-audit-uzbekistan.html',
+    ru: {
+      title: 'Что такое аудит и кто обязан его проходить | Dynamic Audit',
+      desc: 'Что такое аудит, чем он отличается от налоговой проверки, кто обязан проходить аудит в Узбекистане по статье 35 ЗРУ-677 и кто опирается на аудиторское заключение.',
+    },
+    uz: {
+      title: "Audit nima va kim majburiy auditdan o'tadi? | Dynamic Audit",
+      desc: "Audit nima, u soliq tekshiruvidan nimasi bilan farq qiladi, O'zbekistonda kim majburiy auditdan o'tishi shart va auditorlik xulosasiga kim tayanadi.",
+    },
+  },
+  {
+    path: 'blog/index.html',
+    ru: {
+      title: 'Статьи: аудит, МСФО и финансы в Узбекистане | Dynamic Audit',
+      desc: 'Статьи об аудите, МСФО, бухгалтерии и карьере в финансах в Узбекистане от Dynamic Audit — бывших специалистов EY и Deloitte.',
+    },
+    uz: {
+      title: "Maqolalar: O'zbekistonda audit, MSFO va moliya | Dynamic Audit",
+      desc: "Dynamic Audit'dan O'zbekistonda audit, MSFO, buxgalteriya va moliya sohasidagi karyera haqida maqolalar — sobiq EY va Deloitte mutaxassislari.",
+    },
+  },
 ];
 
 const blogUrls = (post) => ({
