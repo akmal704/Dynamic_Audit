@@ -64,18 +64,18 @@ const META = {
   home: {
     canon: '/',
     en: {
-      title: 'Dynamic Audit — IFRS Audit, Accounting & Outsourcing in Uzbekistan | Ex-Big 4',
-      desc: 'IFRS statutory audit, accounting outsourcing, accounting recovery and CFO outsourcing in Uzbekistan for large and international companies. Former EY & Deloitte professionals in Tashkent.',
+      title: 'IFRS Audit & Accounting in Uzbekistan | Dynamic Audit',
+      desc: 'IFRS audit, accounting outsourcing, accounting recovery and CFO services in Tashkent, Uzbekistan. Led by former EY and Deloitte auditors.',
       kw: 'audit Uzbekistan, IFRS audit Tashkent, statutory audit Uzbekistan, group audit, consolidated financial statements audit, audit for foreign subsidiaries, due diligence Uzbekistan, transfer pricing Uzbekistan, accounting outsourcing Uzbekistan, bookkeeping Tashkent, CFO outsourcing, financial consulting Uzbekistan, IFRS transformation, Big 4 alternative Uzbekistan, ACCA auditor Tashkent, audit firm Uzbekistan, external audit, financial statement audit, EY Deloitte alumni',
     },
     ru: {
-      title: 'Dynamic Audit — Аудит по МСФО, Бухгалтерия и Аутсорсинг в Узбекистане',
-      desc: 'Аудит по МСФО, аутсорсинг бухгалтерии, восстановление учёта и аутсорсинг финансового директора в Узбекистане для крупных и международных компаний. Бывшие специалисты EY и Deloitte в Ташкенте.',
+      title: 'Аудит по МСФО и бухгалтерия в Узбекистане | Dynamic Audit',
+      desc: 'Аудит по МСФО, аутсорсинг бухгалтерии, восстановление учёта и аутсорсинг финансового директора в Ташкенте. Бывшие аудиторы EY и Deloitte.',
       kw: 'аудит Узбекистан, аудит по МСФО, аудиторская компания Ташкент, обязательный аудит, статутарный аудит, аудит крупных предприятий, аудит группы компаний, консолидированная отчётность, аудит для инвесторов, аудит для банков, due diligence Узбекистан, дью дилидженс, трансфертное ценообразование, аудит дочерних компаний иностранных корпораций, международный аудит, бухгалтерия, бухгалтерия аутсорс, аутсорсинг бухгалтерии, восстановление учёта, аутсорсинг финансового директора, CFO аутсорсинг, налоговый консалтинг Узбекистан, трансформация отчётности МСФО, НСБУ, альтернатива Большой четвёрки, ACCA аудитор, EY Deloitte',
     },
     uz: {
-      title: 'Dynamic Audit — MSFOʻ Auditi, Buxgalteriya va Autsorsing Oʻzbekistonda',
-      desc: 'MSFOʻ boʻyicha audit, buxgalteriya autsorsingi, hisobni tiklash va moliyaviy direktor autsorsingi Oʻzbekistonda — yirik va xalqaro kompaniyalar uchun. EY va Deloitte sobiq mutaxassislari, Toshkent.',
+      title: 'MSFO auditi va buxgalteriya Oʻzbekistonda | Dynamic Audit',
+      desc: 'MSFO boʻyicha audit, buxgalteriya autsorsingi, hisobni tiklash va moliyaviy direktor autsorsingi Toshkentda. EY va Deloitte sobiq auditorlari.',
       kw: 'audit Oʻzbekiston, MSFO auditi, MSFO boʻyicha audit, auditorlik kompaniyasi Toshkent, majburiy audit, yirik korxonalar auditi, guruh kompaniyalari auditi, konsolidatsiyalangan hisobot, investorlar uchun audit, banklar uchun audit, due diligence Oʻzbekiston, transfert narxlar, xorijiy kompaniyalar shoʻba korxonalari auditi, xalqaro audit, buxgalteriya, buxgalteriya autsorsing, hisobni tiklash, moliyaviy direktor autsorsingi, soliq konsalting, MSFO transformatsiya, BHMS, ACCA auditor, EY Deloitte',
     },
   },
@@ -239,14 +239,12 @@ function buildHome(lang) {
   html = html.replace(/\bhref="\/#/g, `href="/${lang}/#`);
   html = html.replace(/<a href="#" class="nav-logo">/, `<a href="/${lang}/" class="nav-logo">`);
   html = html.replace(/<a href="#" class="footer-logo">/, `<a href="/${lang}/" class="footer-logo">`);
-  // Blog stays English (no translated blog yet): /blog/ already correct.
+  // Blog link -> this language's blog page.
+  html = html.replace(/\bhref="\/blog\//g, `href="/${lang}/blog/`);
 
   // Force this page's language before script.js runs.
   html = html.replace(/<script src="\/script\.js"><\/script>/,
     `<script>window.__PAGE_LANG='${lang}';</script>\n<script src="/script.js"></script>`);
-
-  // Replace the English SEO noscript block with a translated one.
-  html = html.replace(/<noscript>[\s\S]*?<\/noscript>/, noscriptFor(lang));
 
   // Bake native-language body text into the static HTML (belt-and-suspenders
   // with the runtime language switcher).
@@ -267,7 +265,11 @@ function buildService(pageKey, lang) {
   html = html.replace(/\b(href|src)="\.\.\//g, '$1="/');   // ../x -> /x (root assets, blog, home)
   html = html.replace(/\bhref="\/#/g, `href="/${lang}/#`); // home anchors -> language home
   html = html.replace(/\bhref="\/"/g, `href="/${lang}/"`); // bare home link -> language home
+  html = html.replace(/\bhref="\/blog\//g, `href="/${lang}/blog/`); // blog -> language blog
   // Sibling service links (no ../) stay relative and resolve within /<lang>/services/.
+
+  // Translate the nav/footer chrome (data-i18n keys) into this language.
+  html = bakeBody(html, lang);
 
   // Rewrite the language switcher to navigate between URLs, and stop the
   // localStorage auto-switch so the page always renders its own language.
@@ -289,41 +291,59 @@ function buildService(pageKey, lang) {
   return html;
 }
 
-/* ── Translated crawlable noscript for the homepage ───────────── */
-function noscriptFor(lang) {
-  const blocks = {
-    ru: `<noscript>
-<div style="position:absolute;left:-9999px;" aria-hidden="true">
-<h1>Dynamic Audit — Аудит по МСФО в Узбекистане</h1>
-<p>Dynamic Audit предоставляет аудит по МСФО, аутсорсинг бухгалтерии, восстановление учёта и аутсорсинг финансового директора в Узбекистане для крупных и международных компаний. Наши специалисты — бывшие сотрудники EY и Deloitte с квалификацией ACCA.</p>
-<h2>Наши услуги</h2>
-<ul>
-  <li>Аудит по МСФО — обязательный аудит, аудит группы компаний, консолидированная отчётность в Ташкенте</li>
-  <li>Восстановление бухгалтерского учёта — настройка 1С, устранение налоговых рисков</li>
-  <li>Аутсорсинг финансового директора (CFO) — управленческая отчётность, бюджетирование, отчёты для инвесторов и банков</li>
-  <li>Финансовый консалтинг — трансформация отчётности МСФО, due diligence, поддержка аудита Big 4</li>
-  <li>Аутсорсинг бухгалтерии — бухгалтерия для иностранных компаний, налоговая оптимизация</li>
-</ul>
-<p>Аудиторская компания в Ташкенте, основанная выпускниками Большой четвёрки. Аудит для инвесторов и банков, аудит дочерних компаний иностранных корпораций, трансфертное ценообразование, международный аудит.</p>
-</div>
-</noscript>`,
-    uz: `<noscript>
-<div style="position:absolute;left:-9999px;" aria-hidden="true">
-<h1>Dynamic Audit — MSFO boʻyicha Audit Oʻzbekistonda</h1>
-<p>Dynamic Audit Oʻzbekistonda yirik va xalqaro kompaniyalar uchun MSFO boʻyicha audit, buxgalteriya autsorsingi, hisobni tiklash va moliyaviy direktor autsorsingini taqdim etadi. Mutaxassislarimiz — ACCA malakasiga ega EY va Deloitte sobiq xodimlari.</p>
-<h2>Bizning xizmatlar</h2>
-<ul>
-  <li>MSFO boʻyicha audit — majburiy audit, guruh kompaniyalari auditi, konsolidatsiyalangan hisobot, Toshkent</li>
-  <li>Buxgalteriya hisobini tiklash — 1C sozlash, soliq risklarini bartaraf etish</li>
-  <li>Moliyaviy direktor (CFO) autsorsingi — boshqaruv hisoboti, byudjetlashtirish, investorlar uchun hisobot</li>
-  <li>Moliyaviy konsalting — MSFO transformatsiyasi, due diligence, Big 4 auditga tayyorgarlik</li>
-  <li>Buxgalteriya autsorsingi — xorijiy kompaniyalar uchun buxgalteriya, soliq optimallashtirish</li>
-</ul>
-<p>Toshkentdagi auditorlik kompaniyasi, Katta toʻrtlik bitiruvchilari tomonidan tashkil etilgan. Investorlar va banklar uchun audit, xorijiy kompaniyalar shoʻba korxonalari auditi, transfert narxlar, xalqaro audit.</p>
-</div>
-</noscript>`,
-  };
-  return blocks[lang];
+/* ── Blog generation ──────────────────────────────────────────────
+   The article exists in English and Russian (.en/.ru blocks toggled by
+   body[data-lang]). /ru/blog/ shows the Russian text; /uz/blog/ shows the
+   same Russian text with Uzbek navigation and canonicals to /ru/blog/, so
+   readers never get bounced into another language's menus. */
+const BLOG = 'blog/finance-qualifications-uzbekistan.html';
+const BLOG_RU = {
+  title: 'ACCA, CFA, CIMA: финансовые квалификации в Узбекистане | Dynamic Audit',
+  desc: 'Гид по ACCA, CFA, CIMA, DipIFR, CIA, CPA и FRM для специалистов в Узбекистане: карьерные перспективы, структура экзаменов и подготовка.',
+};
+
+function blogHead(html, lang) {
+  const en = `${BASE}/${BLOG}`, ru = `${BASE}/ru/${BLOG}`;
+  const canonical = lang === 'en' ? en : ru;
+  html = html.replace(/[ \t]*<link rel="canonical"[^>]*>\n?/g, '');
+  html = html.replace(/[ \t]*<link rel="alternate" hreflang="[^"]*"[^>]*>\n?/g, '');
+  html = html.replace(/(<meta name="viewport"[^>]*>\n)/,
+    `$1  <link rel="canonical" href="${canonical}" />\n` +
+    `  <link rel="alternate" hreflang="en" href="${en}" />\n` +
+    `  <link rel="alternate" hreflang="ru" href="${ru}" />\n` +
+    `  <link rel="alternate" hreflang="x-default" href="${en}" />\n`);
+  html = html.replace(/(<meta property="og:url" content=")[^"]*("\s*\/>)/, `$1${canonical}$2`);
+  if (lang !== 'en') {
+    html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${BLOG_RU.title}</title>`);
+    html = html.replace(/<meta name="description" content="[\s\S]*?"\s*\/>/, `<meta name="description" content="${BLOG_RU.desc}" />`);
+    html = html.replace(/(<meta property="og:title" content=")[^"]*("\s*\/>)/, `$1${BLOG_RU.title}$2`);
+    html = html.replace(/(<meta property="og:description" content=")[^"]*("\s*\/>)/, `$1${BLOG_RU.desc}$2`);
+  }
+  return html;
+}
+
+function buildBlog(lang) {
+  let html = read(BLOG);
+  html = html.replace(/<html lang="[^"]*">/, '<html lang="ru">');            // article text is Russian
+  html = html.replace(/<body data-lang="[^"]*">/, '<body data-lang="ru">');
+  html = blogHead(html, lang);
+
+  html = html.replace(/\b(href|src)="\.\.\//g, '$1="/');                   // ../x -> /x
+  html = html.replace(/\bhref="\/#/g, `href="/${lang}/#`);
+  html = html.replace(/\bhref="\/"/g, `href="/${lang}/"`);
+  html = html.replace(/\bhref="\/services\//g, `href="/${lang}/services/`);
+
+  // Highlight this page's language in the switchers.
+  html = html.replace(/(class="(?:blog-)?lang-btn) active"/g, '$1"');
+  html = html.replace(new RegExp(`(class="lang-btn)"( onclick="daSwitchLang\\('${lang}'\\)")`, 'g'), '$1 active"$2');
+  html = html.replace(/(class="blog-lang-btn)"( onclick="daSwitchLang\('ru'\)")/g, '$1 active"$2');
+
+  if (lang === 'uz') {
+    html = html.replace(/(<div class="blog-lang-bar">[\s\S]*?<\/div>)/,
+      `$1\n      <p style="font-size:0.88rem;color:var(--text-muted);margin:-1rem 0 2rem;">Bu maqola hozircha rus va ingliz tillarida mavjud.</p>`);
+  }
+
+  return bakeBody(html, lang);
 }
 
 /* Update the English source pages in place: expanded keywords/meta and
@@ -345,12 +365,15 @@ for (const lang of ['ru', 'uz']) {
     write(`${lang}/${svc}`, buildService(svc, lang));
     count++;
   }
+  write(`${lang}/${BLOG}`, buildBlog(lang));
+  count++;
 }
 for (const key of ['home', ...services]) updateEnglish(key);
+write(BLOG, blogHead(read(BLOG), 'en'));
 
 /* ── sitemap.xml with per-language hreflang alternates ────────── */
 function buildSitemap() {
-  const LASTMOD = '2026-08-01';
+  const LASTMOD = '2026-10-14';
   const entries = [];
   const pushEntry = (canonPath, priority) => {
     const u = altBlock(canonPath);
@@ -371,11 +394,18 @@ function buildSitemap() {
   };
   pushEntry('/', '1.0');
   for (const svc of services) pushEntry(META[svc].canon, '0.9');
-  // Blog (English only)
-  entries.push(
-    `  <url>\n    <loc>${BASE}/blog/finance-qualifications-uzbekistan.html</loc>\n` +
-    `    <lastmod>${LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`
-  );
+  // Blog: English + Russian (the /uz/ copy canonicals to /ru/, so it is not listed)
+  const bEn = `${BASE}/${BLOG}`, bRu = `${BASE}/ru/${BLOG}`;
+  for (const loc of [bEn, bRu]) {
+    entries.push(
+      `  <url>\n    <loc>${loc}</loc>\n` +
+      `    <lastmod>${LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n` +
+      `    <xhtml:link rel="alternate" hreflang="en" href="${bEn}"/>\n` +
+      `    <xhtml:link rel="alternate" hreflang="ru" href="${bRu}"/>\n` +
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${bEn}"/>\n` +
+      `  </url>`
+    );
+  }
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n` +

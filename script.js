@@ -126,7 +126,7 @@ const T = {
     /* footer */
     footer_tagline: "Big 4 Quality. Local Precision.<br>Tashkent, Uzbekistan.",
     footer_services_title: "Services", footer_company_title: "Company", footer_contact_title: "Contact",
-    footer_location: "Tashkent, Uzbekistan",
+    footer_location: "Ibn Sino 1, Tashkent, Uzbekistan",
     footer_copy: "&copy; 2025 Dynamic Audit LLC. All rights reserved.",
     /* contact */
     contact_label: "Get In Touch", contact_title: "Let's <span>Work Together</span>",
@@ -296,7 +296,7 @@ const T = {
     /* footer */
     footer_tagline: "Качество Big 4. Местная точность.<br>Ташкент, Узбекистан.",
     footer_services_title: "Услуги", footer_company_title: "Компания", footer_contact_title: "Контакты",
-    footer_location: "Ташкент, Узбекистан",
+    footer_location: "Ибн Сино 1, Ташкент, Узбекистан",
     footer_copy: "&copy; 2025 Dynamic Audit LLC. Все права защищены.",
     /* contact */
     contact_label: "Свяжитесь с нами", contact_title: "Давайте <span>работать вместе</span>",
@@ -466,7 +466,7 @@ const T = {
     /* footer */
     footer_tagline: "Big 4 Sifati. Mahalliy Aniqlik.<br>Toshkent, O'zbekiston.",
     footer_services_title: "Xizmatlar", footer_company_title: "Kompaniya", footer_contact_title: "Aloqa",
-    footer_location: "Toshkent, O'zbekiston",
+    footer_location: "Ibn Sino 1, Toshkent, O'zbekiston",
     footer_copy: "&copy; 2025 Dynamic Audit MChJ. Barcha huquqlar himoyalangan.",
     /* contact */
     contact_label: "Bog'laning", contact_title: "Keling <span>Birgalikda Ishlaylik</span>",
@@ -529,7 +529,6 @@ function daSwitchLang(lang) {
 
 function applyLang(lang) {
   currentLang = lang;
-  localStorage.setItem('da-lang', lang);
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;

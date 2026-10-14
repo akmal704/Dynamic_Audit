@@ -30,10 +30,17 @@
   --transition: 0.28s cubic-bezier(.2,.8,.2,1);
   --max-w:      1240px;
 
-  --f-display: 'Roboto Flex', 'Arial Narrow', Arial, sans-serif;
-  --f-body:    'Golos Text', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --f-display: 'Roboto Flex', 'DA Display Fallback', Arial, sans-serif;
+  --f-body:    'Golos Text', 'DA Body Fallback', 'Segoe UI', Helvetica, Arial, sans-serif;
   --f-mono:    'IBM Plex Mono', Consolas, 'Courier New', monospace;
 }
+
+/* Metric-matched fallbacks: Arial scaled to the web fonts' widths (measured),
+   so text does not re-wrap and shift the layout when the web fonts arrive. */
+@font-face { font-family: 'DA Display Fallback'; src: local('Arial'); font-weight: 400 599; size-adjust: 96%; }
+@font-face { font-family: 'DA Display Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'); font-weight: 600 900; size-adjust: 96%; }
+@font-face { font-family: 'DA Body Fallback'; src: local('Arial'); font-weight: 400 599; size-adjust: 108%; }
+@font-face { font-family: 'DA Body Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'); font-weight: 600 900; size-adjust: 108%; }
 
 /* ── Reset ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

@@ -140,12 +140,12 @@
 
 <nav id="site-nav">
   <div class="container nav-inner">
-    <a href="../" class="nav-logo"><img src="../brand_assets/IMG_8910(1) (1).png" alt="Dynamic Audit" /></a>
+    <a href="../" class="nav-logo"><img src="../brand_assets/logo.png" alt="Dynamic Audit" width="128" height="118" /></a>
     <ul id="nav-menu" class="nav-links">
-      <li><a href="../#services">Services</a></li><li><a href="../#about">About</a></li><li><a href="../#team">Team</a></li><li><a href="../#credentials">Credentials</a></li><li><a href="../#portfolio">Clients</a></li><li><a href="../blog/finance-qualifications-uzbekistan.html">Insights</a></li><li><a href="../#contact">Contact</a></li>
+      <li><a href="../#services" data-i18n="nav_services">Services</a></li><li><a href="../#about" data-i18n="nav_about">About</a></li><li><a href="../#team" data-i18n="nav_team">Team</a></li><li><a href="../#credentials" data-i18n="nav_credentials">Credentials</a></li><li><a href="../#portfolio" data-i18n="nav_portfolio">Clients</a></li><li><a href="../blog/finance-qualifications-uzbekistan.html" data-i18n="nav_insights">Insights</a></li><li><a href="../#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <div class="lang-switcher"><button class="lang-btn active" onclick="setSvcLang('en',this)">EN</button><button class="lang-btn" onclick="setSvcLang('ru',this)">RU</button><button class="lang-btn" onclick="setSvcLang('uz',this)">UZ</button></div>
+      <div class="lang-switcher"><button class="lang-btn active" onclick="daSwitchLang('en')">EN</button><button class="lang-btn" onclick="daSwitchLang('ru')">RU</button><button class="lang-btn" onclick="daSwitchLang('uz')">UZ</button></div>
       <button id="hamburger" aria-label="Menu" onclick="document.getElementById('nav-menu').classList.toggle('open')"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -176,9 +176,9 @@
     <article class="svc-content">
       <div class="svc-lang-bar">
         <span class="svc-lang-bar-lbl">Language / Язык / Til:</span>
-        <button class="svc-lang-btn active" onclick="setSvcLang('en',this)">English</button>
-        <button class="svc-lang-btn" onclick="setSvcLang('ru',this)">Русский</button>
-        <button class="svc-lang-btn" onclick="setSvcLang('uz',this)">O'zbekcha</button>
+        <button class="svc-lang-btn active" onclick="daSwitchLang('en')">English</button>
+        <button class="svc-lang-btn" onclick="daSwitchLang('ru')">Русский</button>
+        <button class="svc-lang-btn" onclick="daSwitchLang('uz')">O'zbekcha</button>
       </div>
 
       <p class="svc-lead en">Our financial consulting practice covers the advisory work that goes beyond a standard audit — IFRS transformation, Big 4 audit readiness, due diligence preparation and internal controls assessment. Every engagement is led by a founding partner with hands-on Big 4 experience, giving you access to the same rigour without the Big 4 price tag.</p>
@@ -319,16 +319,15 @@
 
 <footer id="footer">
   <div class="footer-main"><div class="container footer-grid">
-    <div class="footer-brand"><a href="../" class="footer-logo"><img src="../brand_assets/IMG_8910(1) (1).png" alt="Dynamic Audit" /></a><p class="footer-tagline">Big 4 Quality. Local Precision.<br>Tashkent, Uzbekistan.</p></div>
-    <div class="footer-col"><h5>Services</h5><ul><li><a href="ifrs-audit-uzbekistan.html">IFRS Statutory Audit</a></li><li><a href="accounting-outsourcing-uzbekistan.html">Accounting Outsourcing</a></li><li><a href="accounting-recovery-uzbekistan.html">Accounting Recovery</a></li><li><a href="cfo-outsourcing-tashkent.html">CFO Outsourcing</a></li><li><a href="financial-consulting-uzbekistan.html">Financial Consulting</a></li></ul></div>
-    <div class="footer-col"><h5>Company</h5><ul><li><a href="../#about">About</a></li><li><a href="../#team">Team</a></li><li><a href="../blog/finance-qualifications-uzbekistan.html">Insights</a></li><li><a href="../#contact">Contact</a></li></ul></div>
-    <div class="footer-col footer-contact"><h5>Contact</h5><ul><li><svg viewBox="0 0 20 20" fill="none"><path d="M2 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4z" stroke="currentColor" stroke-width="1.4"/><path d="M2 6l8 5 8-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><a href="mailto:info@dynamicaudit.uz">info@dynamicaudit.uz</a></li><li><svg viewBox="0 0 20 20" fill="none"><path d="M3 4a1 1 0 0 1 1-1h3l1.5 4-2 1a11 11 0 0 0 4.5 4.5l1-2 4 1.5v3a1 1 0 0 1-1 1C7.16 17 3 12.84 3 7V4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><a href="tel:+998935371114">+998 93 537 11 14</a></li><li><svg viewBox="0 0 20 20" fill="none"><path d="M3 4a1 1 0 0 1 1-1h3l1.5 4-2 1a11 11 0 0 0 4.5 4.5l1-2 4 1.5v3a1 1 0 0 1-1 1C7.16 17 3 12.84 3 7V4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><a href="tel:+998888005400">+998 88 800 54 00</a></li></ul></div>
+    <div class="footer-brand"><a href="../" class="footer-logo"><img src="../brand_assets/logo.png" alt="Dynamic Audit" width="128" height="118" /></a><p class="footer-tagline" data-i18n="footer_tagline">Big 4 Quality. Local Precision.<br>Tashkent, Uzbekistan.</p></div>
+    <div class="footer-col"><h5 data-i18n="footer_services_title">Services</h5><ul><li><a href="ifrs-audit-uzbekistan.html" data-i18n="svc1_title">IFRS Statutory Audit</a></li><li><a href="accounting-outsourcing-uzbekistan.html" data-i18n="svc5_title">Accounting Outsourcing</a></li><li><a href="accounting-recovery-uzbekistan.html" data-i18n="svc2_title">Accounting Recovery</a></li><li><a href="cfo-outsourcing-tashkent.html" data-i18n="svc3_title">CFO Outsourcing</a></li><li><a href="financial-consulting-uzbekistan.html" data-i18n="svc4_title">Financial Consulting</a></li></ul></div>
+    <div class="footer-col"><h5 data-i18n="footer_company_title">Company</h5><ul><li><a href="../#about" data-i18n="nav_about">About</a></li><li><a href="../#team" data-i18n="nav_team">Team</a></li><li><a href="../blog/finance-qualifications-uzbekistan.html" data-i18n="nav_insights">Insights</a></li><li><a href="../#contact" data-i18n="nav_contact">Contact</a></li></ul></div>
+    <div class="footer-col footer-contact"><h5 data-i18n="footer_contact_title">Contact</h5><ul><li><svg viewBox="0 0 20 20" fill="none"><path d="M2 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4z" stroke="currentColor" stroke-width="1.4"/><path d="M2 6l8 5 8-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><a href="mailto:info@dynamicaudit.uz">info@dynamicaudit.uz</a></li><li><svg viewBox="0 0 20 20" fill="none"><path d="M3 4a1 1 0 0 1 1-1h3l1.5 4-2 1a11 11 0 0 0 4.5 4.5l1-2 4 1.5v3a1 1 0 0 1-1 1C7.16 17 3 12.84 3 7V4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><a href="tel:+998935371114">+998 93 537 11 14</a></li><li><svg viewBox="0 0 20 20" fill="none"><path d="M3 4a1 1 0 0 1 1-1h3l1.5 4-2 1a11 11 0 0 0 4.5 4.5l1-2 4 1.5v3a1 1 0 0 1-1 1C7.16 17 3 12.84 3 7V4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><a href="tel:+998888005400">+998 88 800 54 00</a></li></ul></div>
   </div></div>
-  <div class="footer-bottom"><div class="container footer-bottom-inner"><span>&copy; 2026 Dynamic Audit LLC. All rights reserved.</span><div class="footer-lang"><button class="lang-btn" onclick="setSvcLang('en',this)">EN</button><button class="lang-btn" onclick="setSvcLang('ru',this)">RU</button><button class="lang-btn" onclick="setSvcLang('uz',this)">UZ</button></div></div></div>
+  <div class="footer-bottom"><div class="container footer-bottom-inner"><span>&copy; 2026 Dynamic Audit LLC. All rights reserved.</span><div class="footer-lang"><button class="lang-btn" onclick="daSwitchLang('en')">EN</button><button class="lang-btn" onclick="daSwitchLang('ru')">RU</button><button class="lang-btn" onclick="daSwitchLang('uz')">UZ</button></div></div></div>
 </footer>
 <script>
-  function setSvcLang(lang,btn){document.body.setAttribute('data-lang',lang);localStorage.setItem('da-lang',lang);document.querySelectorAll('.svc-lang-btn,.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('[onclick*="setSvcLang(\''+lang+'\'"]').forEach(b=>b.classList.add('active'));}
-  (function(){const l=localStorage.getItem('da-lang');if(l&&l!=='en')setSvcLang(l);})();
+  function daSwitchLang(lang){var p=location.pathname.replace(/^\/(ru|uz)(?=\/|$)/,'');if(p==='')p='/';var t=(lang==='en')?p:('/'+lang+p);t=t.replace(/\/{2,}/g,'/');location.href=t+location.hash;}
   function toggleFaq(btn){btn.closest('.faq-item').classList.toggle('open');}
   window.addEventListener('scroll',()=>{document.getElementById('site-nav').classList.toggle('scrolled',window.scrollY>40);});
 </script>
