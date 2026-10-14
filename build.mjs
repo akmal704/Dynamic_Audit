@@ -276,7 +276,9 @@ function buildService(pageKey, lang) {
   html = html.replace(/(class="(?:svc-)?lang-btn) active"/g, '$1"');
   html = html.replace(new RegExp(`(class="(svc-)?lang-btn)"( onclick="daSwitchLang\\('${lang}'\\)")`, 'g'), '$1 active"$3');
   html = html.replace(
-    /<script>[\s\S]*?<\/script>\s*<\/body>/,
+    // Only the final inline script before </body>: the match may not span
+    // another <script tag, or it would swallow the page from the GA4 tag in <head>.
+    /<script>(?:(?!<script)[\s\S])*?<\/script>\s*<\/body>/,
     `<script>
   function daSwitchLang(lang){var p=location.pathname.replace(/^\\/(ru|uz)(?=\\/|$)/,'');if(p==='')p='/';var t=(lang==='en')?p:('/'+lang+p);t=t.replace(/\\/{2,}/g,'/');location.href=t+location.hash;}
   function toggleFaq(btn){btn.closest('.faq-item').classList.toggle('open');}
