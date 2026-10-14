@@ -310,56 +310,65 @@ function buildService(pageKey, lang) {
 }
 
 /* ── Blog generation ──────────────────────────────────────────────
-   The article exists in English and Russian (.en/.ru blocks toggled by
-   body[data-lang]). /ru/blog/ shows the Russian text; /uz/blog/ shows the
-   same Russian text with Uzbek navigation and canonicals to /ru/blog/, so
-   readers never get bounced into another language's menus. */
-const BLOG = 'blog/finance-qualifications-uzbekistan.html';
-const BLOG_RU = {
-  title: 'ACCA, CFA, CIMA: финансовые квалификации в Узбекистане | Dynamic Audit',
-  desc: 'Гид по ACCA, CFA, CIMA, DipIFR, CIA, CPA и FRM для специалистов в Узбекистане: карьерные перспективы, структура экзаменов и подготовка.',
-};
+   Each post is one English source file holding .en/.ru/.uz text blocks
+   (toggled by body[data-lang]). The build writes /ru/blog/... and
+   /uz/blog/... copies with that language's menus, title and canonical.
+   To publish a new post, add its source file to BLOG_POSTS with Russian
+   and Uzbek titles/descriptions. */
+const BLOG_POSTS = [
+  {
+    path: 'blog/finance-qualifications-uzbekistan.html',
+    ru: {
+      title: 'ACCA, CFA, CIMA: финансовые квалификации в Узбекистане | Dynamic Audit',
+      desc: 'Гид по ACCA, CFA, CIMA, DipIFR, CIA, CPA и FRM для специалистов в Узбекистане: карьерные перспективы, структура экзаменов и подготовка.',
+    },
+    uz: {
+      title: "ACCA, CFA, CIMA: O'zbekistonda moliyaviy malakalar | Dynamic Audit",
+      desc: "O'zbekiston mutaxassislari uchun ACCA, CFA, CIMA, DipIFR, CIA, CPA va FRM bo'yicha qo'llanma: karyera imkoniyatlari, imtihonlar tuzilmasi va tayyorgarlik.",
+    },
+  },
+];
 
-function blogHead(html, lang) {
-  const en = `${BASE}/${BLOG}`, ru = `${BASE}/ru/${BLOG}`;
-  const canonical = lang === 'en' ? en : ru;
+const blogUrls = (post) => ({
+  en: `${BASE}/${post.path}`, ru: `${BASE}/ru/${post.path}`, uz: `${BASE}/uz/${post.path}`,
+});
+
+function blogHead(html, post, lang) {
+  const u = blogUrls(post);
   html = html.replace(/[ \t]*<link rel="canonical"[^>]*>\n?/g, '');
   html = html.replace(/[ \t]*<link rel="alternate" hreflang="[^"]*"[^>]*>\n?/g, '');
   html = html.replace(/(<meta name="viewport"[^>]*>\n)/,
-    `$1  <link rel="canonical" href="${canonical}" />\n` +
-    `  <link rel="alternate" hreflang="en" href="${en}" />\n` +
-    `  <link rel="alternate" hreflang="ru" href="${ru}" />\n` +
-    `  <link rel="alternate" hreflang="x-default" href="${en}" />\n`);
-  html = html.replace(/(<meta property="og:url" content=")[^"]*("\s*\/>)/, `$1${canonical}$2`);
+    `$1  <link rel="canonical" href="${u[lang]}" />\n` +
+    `  <link rel="alternate" hreflang="en" href="${u.en}" />\n` +
+    `  <link rel="alternate" hreflang="ru" href="${u.ru}" />\n` +
+    `  <link rel="alternate" hreflang="uz" href="${u.uz}" />\n` +
+    `  <link rel="alternate" hreflang="x-default" href="${u.en}" />\n`);
+  html = html.replace(/(<meta property="og:url" content=")[^"]*("\s*\/>)/, `$1${u[lang]}$2`);
   if (lang !== 'en') {
-    html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${BLOG_RU.title}</title>`);
-    html = html.replace(/<meta name="description" content="[\s\S]*?"\s*\/>/, `<meta name="description" content="${BLOG_RU.desc}" />`);
-    html = html.replace(/(<meta property="og:title" content=")[^"]*("\s*\/>)/, `$1${BLOG_RU.title}$2`);
-    html = html.replace(/(<meta property="og:description" content=")[^"]*("\s*\/>)/, `$1${BLOG_RU.desc}$2`);
+    const m = post[lang];
+    html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${m.title}</title>`);
+    html = html.replace(/<meta name="description" content="[\s\S]*?"\s*\/>/, `<meta name="description" content="${m.desc}" />`);
+    html = html.replace(/(<meta property="og:title" content=")[^"]*("\s*\/>)/, `$1${m.title}$2`);
+    html = html.replace(/(<meta property="og:description" content=")[^"]*("\s*\/>)/, `$1${m.desc}$2`);
   }
   return html;
 }
 
-function buildBlog(lang) {
-  let html = read(BLOG);
-  html = html.replace(/<html lang="[^"]*">/, '<html lang="ru">');            // article text is Russian
-  html = html.replace(/<body data-lang="[^"]*">/, '<body data-lang="ru">');
-  html = blogHead(html, lang);
+function buildBlog(post, lang) {
+  let html = read(post.path);
+  html = html.replace(/<html lang="[^"]*">/, `<html lang="${lang}">`);
+  html = html.replace(/<body data-lang="[^"]*">/, `<body data-lang="${lang}">`);
+  html = blogHead(html, post, lang);
 
   html = html.replace(/\b(href|src)="\.\.\//g, '$1="/');                   // ../x -> /x
   html = html.replace(/\bhref="\/#/g, `href="/${lang}/#`);
   html = html.replace(/\bhref="\/"/g, `href="/${lang}/"`);
   html = html.replace(/\bhref="\/services\//g, `href="/${lang}/services/`);
+  html = html.replace(/\bhref="\/blog\//g, `href="/${lang}/blog/`);
 
-  // Highlight this page's language in the switchers.
+  // Highlight this page's language in every switcher (nav, article bar, footer).
   html = html.replace(/(class="(?:blog-)?lang-btn) active"/g, '$1"');
-  html = html.replace(new RegExp(`(class="lang-btn)"( onclick="daSwitchLang\\('${lang}'\\)")`, 'g'), '$1 active"$2');
-  html = html.replace(/(class="blog-lang-btn)"( onclick="daSwitchLang\('ru'\)")/g, '$1 active"$2');
-
-  if (lang === 'uz') {
-    html = html.replace(/(<div class="blog-lang-bar">[\s\S]*?<\/div>)/,
-      `$1\n      <p style="font-size:0.88rem;color:var(--text-muted);margin:-1rem 0 2rem;">Bu maqola hozircha rus va ingliz tillarida mavjud.</p>`);
-  }
+  html = html.replace(new RegExp(`(class="(?:blog-)?lang-btn)"( onclick="daSwitchLang\\('${lang}'\\)")`, 'g'), '$1 active"$2');
 
   return bakeBody(html, lang);
 }
@@ -383,11 +392,13 @@ for (const lang of ['ru', 'uz']) {
     write(`${lang}/${svc}`, buildService(svc, lang));
     count++;
   }
-  write(`${lang}/${BLOG}`, buildBlog(lang));
-  count++;
+  for (const post of BLOG_POSTS) {
+    write(`${lang}/${post.path}`, buildBlog(post, lang));
+    count++;
+  }
 }
 for (const key of ['home', ...services]) updateEnglish(key);
-write(BLOG, blogHead(read(BLOG), 'en'));
+for (const post of BLOG_POSTS) write(post.path, blogHead(read(post.path), post, 'en'));
 
 /* ── sitemap.xml with per-language hreflang alternates ────────── */
 function buildSitemap() {
@@ -412,18 +423,7 @@ function buildSitemap() {
   };
   pushEntry('/', '1.0');
   for (const svc of services) pushEntry(META[svc].canon, '0.9');
-  // Blog: English + Russian (the /uz/ copy canonicals to /ru/, so it is not listed)
-  const bEn = `${BASE}/${BLOG}`, bRu = `${BASE}/ru/${BLOG}`;
-  for (const loc of [bEn, bRu]) {
-    entries.push(
-      `  <url>\n    <loc>${loc}</loc>\n` +
-      `    <lastmod>${LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n` +
-      `    <xhtml:link rel="alternate" hreflang="en" href="${bEn}"/>\n` +
-      `    <xhtml:link rel="alternate" hreflang="ru" href="${bRu}"/>\n` +
-      `    <xhtml:link rel="alternate" hreflang="x-default" href="${bEn}"/>\n` +
-      `  </url>`
-    );
-  }
+  for (const post of BLOG_POSTS) pushEntry('/' + post.path, '0.7');
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n` +
