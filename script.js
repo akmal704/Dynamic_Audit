@@ -7,7 +7,8 @@ const T = {
     nav_insights: "Insights",
     /* hero */
     hero_badge: "Founded by Big 4 Alumni",
-    hero_title: "Big 4 Quality.<br><span>Local Precision.</span>",
+    hero_title: "Audit Firm in Tashkent<br><span>IFRS Audit &amp; Accounting</span>",
+    hero_slogan: "Big 4 Quality. Local Precision.",
     hero_sub: "IFRS audit, accounting recovery, and CFO outsourcing — delivered by former EY and Deloitte professionals who understand Uzbekistan's market inside out.",
     hero_cta1: "Request an Audit Quote",
     hero_cta2: "Explore Services",
@@ -181,7 +182,8 @@ const T = {
     nav_insights: "Аналитика",
     /* hero */
     hero_badge: "Основана выпускниками Большой четвёрки",
-    hero_title: "Качество Big 4.<br><span>Местная точность.</span>",
+    hero_title: "Аудиторская компания в Ташкенте<br><span>Аудит по МСФО и бухгалтерия</span>",
+    hero_slogan: "Качество Big 4. Местная точность.",
     hero_sub: "Аудит по МСФО, восстановление учёта и аутсорсинг CFO — от бывших специалистов EY и Deloitte, знающих рынок Узбекистана изнутри.",
     hero_cta1: "Запросить аудит",
     hero_cta2: "Наши услуги",
@@ -355,8 +357,9 @@ const T = {
     nav_insights: "Tahlillar",
     /* hero */
     hero_badge: "Big 4 Bitiruvchilari Tomonidan Asos Solingan",
-    hero_title: "Big 4 Sifati.<br><span>Mahalliy Aniqlik.</span>",
-    hero_sub: "IFRS auditi, buxgalteriya hisobini tiklash va CFO autsorsingi — O'zbekiston bozorini ichidan biladigan sobiq EY va Deloitte mutaxassislaridan.",
+    hero_title: "Toshkentdagi auditorlik kompaniyasi<br><span>MSFO auditi va buxgalteriya</span>",
+    hero_slogan: "Big 4 Sifati. Mahalliy Aniqlik.",
+    hero_sub: "MSFO auditi, buxgalteriya hisobini tiklash va CFO autsorsingi — O'zbekiston bozorini ichidan biladigan sobiq EY va Deloitte mutaxassislaridan.",
     hero_cta1: "Audit So'rovi Yuborish",
     hero_cta2: "Xizmatlarni Ko'rish",
     hstat1: "IFRS Auditi", hstat2: "Mijoz Tejalmalari", hstat3: "Yillik Tajriba", hstat4: "Big 4 Asoschilari",
