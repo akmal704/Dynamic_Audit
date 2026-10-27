@@ -339,6 +339,17 @@ const BLOG_POSTS = [
     },
   },
   {
+    path: 'blog/mandatory-audit-check.html',
+    ru: {
+      title: 'Нужен ли обязательный аудит? Проверка онлайн | Dynamic Audit',
+      desc: 'Проверьте за минуту, обязан ли ваш бизнес проходить ежегодный аудит по статье 35 ЗРУ-677: виды организаций, пороги по активам, выручке и численности, сроки.',
+    },
+    uz: {
+      title: "Majburiy audit kerakmi? Onlayn tekshiruv | Dynamic Audit",
+      desc: "Kompaniyangiz 35-moddaga ko'ra yillik majburiy auditdan o'tishi shartmi — bir daqiqada tekshiring: tashkilot turlari, aktivlar, tushum va xodimlar chegaralari.",
+    },
+  },
+  {
     path: 'blog/index.html',
     ru: {
       title: 'Статьи: аудит, МСФО и финансы в Узбекистане | Dynamic Audit',
