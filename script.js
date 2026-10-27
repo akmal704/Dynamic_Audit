@@ -37,7 +37,7 @@ const T = {
     services_title: "Services Built on <span>Big 4 Standards</span>",
     services_sub: "Every engagement is led by former Big 4 professionals who bring international methodology to the Uzbekistan market.",
     svc1_title: "IFRS Statutory Audit",
-    svc1_desc: "Independent audit of financial statements prepared under ISA, and Uzbek statutory requirements. We deliver audit opinions that international investors, banks, and regulators trust.",
+    svc1_desc: "Independent audit of financial statements in line with ISA and Uzbek statutory requirements. We deliver audit opinions that international investors, banks, and regulators trust.",
     svc1_b1: "IFRS &amp; ISA compliance", svc1_b2: "Big 4 audit methodology",
     svc1_b3: "Detailed management letter",       svc1_b4: "Consolidated group audits",
     svc2_title: "Accounting Recovery",

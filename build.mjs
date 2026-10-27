@@ -401,6 +401,9 @@ function updateEnglish(pageKey) {
   const path = pageKey === 'home' ? 'index.html' : pageKey;
   let html = read(path);
   html = rewriteHead(html, 'en', pageKey);
+  // Keep the homepage's static English text identical to T.en (what visitors see
+  // after script.js runs), so crawlers never read a stale version.
+  if (pageKey === 'home') html = bakeBody(html, 'en');
   write(path, html);
 }
 
