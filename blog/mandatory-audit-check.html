@@ -40,10 +40,10 @@
   { "@context": "https://schema.org", "@type": "WebApplication", "name": "Mandatory audit check (Uzbekistan)",
     "url": "https://dynamicaudit.uz/blog/mandatory-audit-check.html", "applicationCategory": "BusinessApplication", "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "UZS" },
-    "inLanguage": ["en", "ru", "uz"],
+    "inLanguage": "en",
     "provider": { "@type": "Organization", "name": "Dynamic Audit", "url": "https://dynamicaudit.uz" } }
   </script>
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
   <style>
     /* ── Blog-specific styles ─────────────────────────── */
     [data-lang="en"] .ru { display: none; }
@@ -499,17 +499,17 @@
 <!-- ══ NAV ═══════════════════════════════════════════════════ -->
 <nav id="site-nav">
   <div class="container nav-inner">
-    <a href="../" class="nav-logo">
-      <img src="../brand_assets/logo.png" alt="Dynamic Audit" width="128" height="118" />
+    <a href="/" class="nav-logo">
+      <img src="/brand_assets/logo.png" alt="Dynamic Audit" width="128" height="118" />
     </a>
     <ul id="nav-menu" class="nav-links">
-      <li><a href="../#services" data-i18n="nav_services">Services</a></li>
-      <li><a href="../#about" data-i18n="nav_about">About</a></li>
-      <li><a href="../#team" data-i18n="nav_team">Team</a></li>
-      <li><a href="../#credentials" data-i18n="nav_credentials">Credentials</a></li>
-      <li><a href="../#portfolio" data-i18n="nav_portfolio">Clients</a></li>
+      <li><a href="/#services" data-i18n="nav_services">Services</a></li>
+      <li><a href="/#about" data-i18n="nav_about">About</a></li>
+      <li><a href="/#team" data-i18n="nav_team">Team</a></li>
+      <li><a href="/#credentials" data-i18n="nav_credentials">Credentials</a></li>
+      <li><a href="/#portfolio" data-i18n="nav_portfolio">Clients</a></li>
       <li><a href="index.html" data-i18n="nav_insights">Insights</a></li>
-      <li><a href="../#contact" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="/#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
     <div class="nav-right">
       <div class="lang-switcher">
@@ -528,21 +528,15 @@
 <section class="blog-hero">
   <div class="container">
     <nav class="blog-breadcrumb" aria-label="breadcrumb">
-      <a href="../">Dynamic Audit</a>
+      <a href="/">Dynamic Audit</a>
       <span>›</span>
-      <a href="index.html"><span class="en">Insights</span><span class="ru">Статьи</span><span class="uz">Maqolalar</span></a>
+      <a href="index.html"><span class="en">Insights</span></a>
       <span>›</span>
-      <span class="en">Mandatory audit check</span><span class="ru">Проверка обязательного аудита</span><span class="uz">Majburiy audit tekshiruvi</span>
+      <span class="en">Mandatory audit check</span>
     </nav>
     <div class="blog-hero-label en">Free tool</div>
-    <div class="blog-hero-label ru">Бесплатный инструмент</div>
-    <div class="blog-hero-label uz">Bepul vosita</div>
     <h1 class="blog-hero-title en">Does Your Company Need a <span>Mandatory Audit?</span></h1>
-    <h1 class="blog-hero-title ru">Нужен ли вашей компании <span>обязательный аудит?</span></h1>
-    <h1 class="blog-hero-title uz">Kompaniyangizga <span>majburiy audit kerakmi?</span></h1>
     <p class="blog-hero-sub en">Answer two questions and get the answer in a minute, based on Article 35 of the Law on Auditing Activity.</p>
-    <p class="blog-hero-sub ru">Ответьте на два вопроса и получите ответ за минуту — на основе статьи 35 Закона «Об аудиторской деятельности».</p>
-    <p class="blog-hero-sub uz">Ikki savolga javob bering va bir daqiqada javob oling — "Auditorlik faoliyati to'g'risida"gi Qonunning 35-moddasi asosida.</p>
   </div>
 </section>
 
@@ -550,53 +544,53 @@
 <main class="blog-main">
   <div class="container blog-content">
     <form class="chk" id="chk" novalidate>
-      <h2><span class="en">1. What type of organisation is it?</span><span class="ru">1. Какой тип организации?</span><span class="uz">1. Tashkilot turi qanday?</span></h2>
+      <h2><span class="en">1. What type of organisation is it?</span></h2>
       <div class="chk-orgs">
-        <label class="chk-org"><input type="radio" name="org" value="jsc" /> <span class="en">Joint-stock company (JSC)</span><span class="ru">Акционерное общество (АО)</span><span class="uz">Aksiyadorlik jamiyati (AJ)</span></label>
-        <label class="chk-org"><input type="radio" name="org" value="bank" /> <span class="en">Bank or other credit institution</span><span class="ru">Банк или иная кредитная организация</span><span class="uz">Bank yoki boshqa kredit tashkiloti</span></label>
-        <label class="chk-org"><input type="radio" name="org" value="insurance" /> <span class="en">Insurance organisation</span><span class="ru">Страховая организация</span><span class="uz">Sug'urta tashkiloti</span></label>
-        <label class="chk-org"><input type="radio" name="org" value="exchange" /> <span class="en">Exchange</span><span class="ru">Биржа</span><span class="uz">Birja</span></label>
-        <label class="chk-org"><input type="radio" name="org" value="fund" /> <span class="en">Investment or other fund pooling money from legal entities and individuals</span><span class="ru">Инвестиционный или иной фонд, аккумулирующий средства юридических и физических лиц</span><span class="uz">Yuridik va jismoniy shaxslar mablag'larini jamlaydigan investitsiya yoki boshqa fond</span></label>
-        <label class="chk-org"><input type="radio" name="org" value="coop" /> <span class="en">Agricultural cooperative</span><span class="ru">Сельскохозяйственный кооператив</span><span class="uz">Qishloq xo'jaligi kooperativi</span></label>
-        <label class="chk-org"><input type="radio" name="org" value="contrib" /> <span class="en">Fund formed from contributions of legal entities and individuals</span><span class="ru">Фонд, создаваемый за счёт отчислений юридических и физических лиц</span><span class="uz">Yuridik va jismoniy shaxslar ajratmalari hisobidan tashkil etilgan fond</span></label>
-        <label class="chk-org"><input type="radio" name="org" value="state" /> <span class="en">State unitary enterprise, or company with a state share</span><span class="ru">ГУП или компания с долей государства</span><span class="uz">Davlat unitar korxonasi yoki davlat ulushi bor kompaniya</span></label>
-        <label class="chk-org"><input type="radio" name="org" value="other" checked /> <span class="en">Other commercial company (LLC, private enterprise, etc.)</span><span class="ru">Другая коммерческая организация (ООО, ЧП и т. д.)</span><span class="uz">Boshqa tijorat tashkiloti (MChJ, XK va h.k.)</span></label>
+        <label class="chk-org"><input type="radio" name="org" value="jsc" /> <span class="en">Joint-stock company (JSC)</span></label>
+        <label class="chk-org"><input type="radio" name="org" value="bank" /> <span class="en">Bank or other credit institution</span></label>
+        <label class="chk-org"><input type="radio" name="org" value="insurance" /> <span class="en">Insurance organisation</span></label>
+        <label class="chk-org"><input type="radio" name="org" value="exchange" /> <span class="en">Exchange</span></label>
+        <label class="chk-org"><input type="radio" name="org" value="fund" /> <span class="en">Investment or other fund pooling money from legal entities and individuals</span></label>
+        <label class="chk-org"><input type="radio" name="org" value="coop" /> <span class="en">Agricultural cooperative</span></label>
+        <label class="chk-org"><input type="radio" name="org" value="contrib" /> <span class="en">Fund formed from contributions of legal entities and individuals</span></label>
+        <label class="chk-org"><input type="radio" name="org" value="state" /> <span class="en">State unitary enterprise, or company with a state share</span></label>
+        <label class="chk-org"><input type="radio" name="org" value="other" checked /> <span class="en">Other commercial company (LLC, private enterprise, etc.)</span></label>
       </div>
 
       <div id="chk-figures">
-        <h2><span class="en">2. Your figures for the last financial year</span><span class="ru">2. Ваши показатели за последний финансовый год</span><span class="uz">2. So'nggi moliyaviy yil bo'yicha ko'rsatkichlaringiz</span></h2>
-        <p class="chk-hint"><span class="en">Use the year-end figures from your financial statements. An audit is mandatory if any two of the three thresholds are exceeded.</span><span class="ru">Используйте данные годовой отчётности. Аудит обязателен, если превышены любые два из трёх порогов.</span><span class="uz">Yillik hisobot ma'lumotlaridan foydalaning. Uchta chegaradan istalgan ikkitasi oshsa, audit majburiy.</span></p>
+        <h2><span class="en">2. Your figures for the last financial year</span></h2>
+        <p class="chk-hint"><span class="en">Use the year-end figures from your financial statements. An audit is mandatory if any two of the three thresholds are exceeded.</span></p>
         <div class="chk-fields">
           <div class="chk-field">
-            <label for="chk-assets"><span class="en">Total assets (balance sheet value)</span><span class="ru">Активы (балансовая стоимость)</span><span class="uz">Aktivlar (balans qiymati)</span></label>
+            <label for="chk-assets"><span class="en">Total assets (balance sheet value)</span></label>
             <div class="chk-row">
               <input id="chk-assets" type="text" inputmode="decimal" autocomplete="off" placeholder="0" />
               <select id="chk-assets-unit" aria-label="unit"><option value="1000000000">billion soum</option><option value="1000000">million soum</option></select>
             </div>
           </div>
           <div class="chk-field">
-            <label for="chk-revenue"><span class="en">Revenue from sales of goods, works and services</span><span class="ru">Выручка от реализации продукции (товаров, работ, услуг)</span><span class="uz">Mahsulot (tovar, ish, xizmat) sotishdan tushgan tushum</span></label>
+            <label for="chk-revenue"><span class="en">Revenue from sales of goods, works and services</span></label>
             <div class="chk-row">
               <input id="chk-revenue" type="text" inputmode="decimal" autocomplete="off" placeholder="0" />
               <select id="chk-revenue-unit" aria-label="unit"><option value="1000000000">billion soum</option><option value="1000000">million soum</option></select>
             </div>
           </div>
           <div class="chk-field">
-            <label for="chk-staff"><span class="en">Average number of employees</span><span class="ru">Средняя численность работников</span><span class="uz">Xodimlarning o'rtacha soni</span></label>
+            <label for="chk-staff"><span class="en">Average number of employees</span></label>
             <div class="chk-row">
               <input id="chk-staff" type="text" inputmode="decimal" autocomplete="off" placeholder="0" />
-              <span class="chk-unit"><span class="en">people</span><span class="ru">человек</span><span class="uz">nafar</span></span>
+              <span class="chk-unit"><span class="en">people</span></span>
             </div>
           </div>
         </div>
         <details class="chk-brv">
-          <summary><span class="en">Base calculation value (BRV) used, soum</span><span class="ru">Используемая БРВ, сум</span><span class="uz">Qo'llanilayotgan BHM, so'm</span>: <span id="chk-brv-show">440 000</span></summary>
+          <summary><span class="en">Base calculation value (BRV) used, soum</span>: <span id="chk-brv-show">440 000</span></summary>
           <input id="chk-brv" type="text" inputmode="numeric" value="440000" aria-label="BRV" />
-          <span class="en">In effect from 1 September 2026. Change it if the BRV has been revised.</span><span class="ru">Действует с 1 сентября 2026 года. Измените, если БРВ пересмотрена.</span><span class="uz">2026-yil 1-sentabrdan amalda. BHM qayta ko'rib chiqilgan bo'lsa, o'zgartiring.</span>
+          <span class="en">In effect from 1 September 2026. Change it if the BRV has been revised.</span>
         </details>
       </div>
 
-      <button type="submit" class="btn-primary"><span class="en">Check</span><span class="ru">Проверить</span><span class="uz">Tekshirish</span></button>
+      <button type="submit" class="btn-primary"><span class="en">Check</span></button>
       <div id="chk-result" aria-live="polite"></div>
     </form>
 
@@ -610,24 +604,6 @@
       <p>For the full background, read <a href="what-is-an-audit-uzbekistan.html">What Is an Audit, and Why Does Anyone Need One?</a></p>
       <p class="chk-disclaimer">This tool gives general information based on Article 35 and is not legal advice. For a definite answer for your company, talk to us.</p>
       </div>
-      <div class="ru">
-      <h2>Как работает проверка</h2>
-      <p>По <a href="https://lex.uz/ru/docs/5307899" target="_blank" rel="noopener">статье 35 Закона «Об аудиторской деятельности»</a> (ЗРУ-677) ежегодный аудит обязателен для акционерных обществ, банков и иных кредитных организаций, страховых организаций, бирж, инвестиционных и иных фондов, аккумулирующих средства, сельскохозяйственных кооперативов, государственных унитарных предприятий и юридических лиц с государственной долей в установленных законом размерах, а также фондов, создаваемых за счёт отчислений.</p>
-      <p>Любая другая коммерческая организация также обязана пройти аудит, если по итогам года она превышает любые два из трёх порогов:</p>
-      <ul><li>Активы свыше 100 000 БРВ</li><li>Выручка свыше 200 000 БРВ</li><li>Средняя численность работников свыше 100 человек</li></ul>
-      <p>При БРВ 440 000 сумов, действующей с 1 сентября 2026 года, это 44 млрд сумов активов и 88 млрд сумов выручки. Организации, подлежащие обязательному аудиту, представляют копию аудиторского заключения в налоговые органы в течение 15 дней после завершения аудита и не позднее 15 июня следующего года.</p>
-      <p>Подробнее — в статье <a href="what-is-an-audit-uzbekistan.html">«Что такое аудит и зачем он кому-то нужен?»</a></p>
-      <p class="chk-disclaimer">Инструмент даёт общую информацию на основе статьи 35 и не является юридической консультацией. Для точного ответа по вашей компании свяжитесь с нами.</p>
-      </div>
-      <div class="uz">
-      <h2>Tekshiruv qanday ishlaydi</h2>
-      <p><a href="https://lex.uz/docs/5307899" target="_blank" rel="noopener">"Auditorlik faoliyati to'g'risida"gi Qonunning 35-moddasiga</a> (O'RQ-677) ko'ra, yillik audit aksiyadorlik jamiyatlari, banklar va boshqa kredit tashkilotlari, sug'urta tashkilotlari, birjalar, mablag'larni jamlaydigan investitsiya va boshqa fondlar, qishloq xo'jaligi kooperativlari, davlat unitar korxonalari va qonunda belgilangan miqdorda davlat ulushi bo'lgan yuridik shaxslar hamda ajratmalar hisobidan tashkil etiladigan fondlar uchun majburiy.</p>
-      <p>Boshqa har qanday tijorat tashkiloti ham, agar yil yakunlari bo'yicha uchta chegaradan istalgan ikkitasidan oshsa, auditdan o'tishi shart:</p>
-      <ul><li>Aktivlar 100 000 BHM dan ortiq</li><li>Tushum 200 000 BHM dan ortiq</li><li>Xodimlarning o'rtacha soni 100 nafardan ortiq</li></ul>
-      <p>2026-yil 1-sentabrdan amaldagi 440 000 so'mlik BHMda bu 44 mlrd so'm aktivlar va 88 mlrd so'm tushumni anglatadi. Majburiy auditdan o'tadigan tashkilotlar auditorlik xulosasi nusxasini audit tugaganidan keyin 15 kun ichida va keyingi yilning 15-iyunidan kechiktirmay soliq organlariga taqdim etadi.</p>
-      <p>Batafsil: <a href="what-is-an-audit-uzbekistan.html">"Audit nima va u kimga kerak?"</a> maqolasi.</p>
-      <p class="chk-disclaimer">Vosita 35-modda asosida umumiy ma'lumot beradi va yuridik maslahat hisoblanmaydi. Kompaniyangiz bo'yicha aniq javob uchun biz bilan bog'laning.</p>
-      </div>
     </div>
   </div>
 </main>
@@ -637,8 +613,8 @@
   <div class="footer-main">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <a href="../" class="footer-logo">
-          <img src="../brand_assets/logo.png" alt="Dynamic Audit" width="128" height="118" />
+        <a href="/" class="footer-logo">
+          <img src="/brand_assets/logo.png" alt="Dynamic Audit" width="128" height="118" />
         </a>
         <p class="footer-tagline" data-i18n="footer_tagline">Big 4 Quality. Local Precision.<br>Tashkent, Uzbekistan.</p>
         <div class="footer-socials">
@@ -653,21 +629,21 @@
       <div class="footer-col">
         <h5 data-i18n="footer_services_title">Services</h5>
         <ul>
-          <li><a href="../services/ifrs-audit-uzbekistan.html" data-i18n="svc1_title">IFRS Statutory Audit</a></li>
-          <li><a href="../services/accounting-outsourcing-uzbekistan.html" data-i18n="svc5_title">Accounting Outsourcing</a></li>
-          <li><a href="../services/tax-advisory-uzbekistan.html" data-i18n="svc6_title">Tax Advisory</a></li>
-          <li><a href="../services/accounting-recovery-uzbekistan.html" data-i18n="svc2_title">Accounting Recovery</a></li>
-          <li><a href="../services/cfo-outsourcing-tashkent.html" data-i18n="svc3_title">CFO Outsourcing</a></li>
-          <li><a href="../services/financial-consulting-uzbekistan.html" data-i18n="svc4_title">Big 4 Advisory Support</a></li>
+          <li><a href="/services/ifrs-audit-uzbekistan.html" data-i18n="svc1_title">IFRS Statutory Audit</a></li>
+          <li><a href="/services/accounting-outsourcing-uzbekistan.html" data-i18n="svc5_title">Accounting Outsourcing</a></li>
+          <li><a href="/services/tax-advisory-uzbekistan.html" data-i18n="svc6_title">Tax Advisory</a></li>
+          <li><a href="/services/accounting-recovery-uzbekistan.html" data-i18n="svc2_title">Accounting Recovery</a></li>
+          <li><a href="/services/cfo-outsourcing-tashkent.html" data-i18n="svc3_title">CFO Outsourcing</a></li>
+          <li><a href="/services/financial-consulting-uzbekistan.html" data-i18n="svc4_title">Big 4 Advisory Support</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5 data-i18n="footer_company_title">Company</h5>
         <ul>
-          <li><a href="../#about" data-i18n="nav_about">About</a></li>
-          <li><a href="../#team" data-i18n="nav_team">Team</a></li>
-          <li><a href="../#credentials" data-i18n="nav_credentials">Credentials</a></li>
-          <li><a href="../#portfolio" data-i18n="nav_portfolio">Clients</a></li>
+          <li><a href="/#about" data-i18n="nav_about">About</a></li>
+          <li><a href="/#team" data-i18n="nav_team">Team</a></li>
+          <li><a href="/#credentials" data-i18n="nav_credentials">Credentials</a></li>
+          <li><a href="/#portfolio" data-i18n="nav_portfolio">Clients</a></li>
         </ul>
       </div>
       <div class="footer-col footer-contact">
@@ -693,7 +669,7 @@
     <div class="container footer-bottom-inner">
       <span>&copy; 2026 Dynamic Audit LLC. All rights reserved.</span>
       <div class="footer-lang">
-        <button class="lang-btn" onclick="daSwitchLang('en')">EN</button>
+        <button class="lang-btn active" onclick="daSwitchLang('en')">EN</button>
         <button class="lang-btn" onclick="daSwitchLang('ru')">RU</button>
         <button class="lang-btn" onclick="daSwitchLang('uz')">UZ</button>
       </div>
@@ -789,7 +765,7 @@
 
   var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
   var actions = function (yes, why) {
-    return '<div class="chk-actions"><a class="btn-primary" href="../#contact">' + (yes ? t('quote') : t('talk')) + '</a>' +
+    return '<div class="chk-actions"><a class="btn-primary" href="/#contact">' + (yes ? t('quote') : t('talk')) + '</a>' +
       (why ? '<a class="chk-more" href=\'' + whyHref + '\'>' + t('why') + ' →</a>' : '') + '</div>';
   };
   var show = function (cls, verdict, html, result) {

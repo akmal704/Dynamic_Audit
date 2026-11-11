@@ -1,6 +1,6 @@
 /* ─────────────────────────────────────────────────────────────
-   build.mjs — generates Russian (/ru/) and Uzbek (/uz/) static
-   versions of the site from the English source files.
+   build.mjs — generates the English, Russian (/ru/) and Uzbek (/uz/)
+   pages from the sources in _src/ (and the ru/uz homepages from index.html).
 
    Run:  node build.mjs
 
@@ -20,6 +20,9 @@ const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 const write = (p, s) => { mkdirSync(dirname(join(ROOT, p)), { recursive: true }); writeFileSync(join(ROOT, p), s); };
 
 const BASE = 'https://dynamicaudit.uz';
+/* Service and blog pages are authored once, holding all three languages, in
+   _src/ (not public). The build writes one single-language page per URL. */
+const SRC = '_src/';
 const LANG_LABEL = { en: 'en_US', ru: 'ru_RU', uz: 'uz_UZ' };
 
 /* Pull the translation dictionary straight out of script.js so the baked
@@ -55,6 +58,63 @@ function bakeBody(html, lang) {
     }
   );
   return html;
+}
+
+/* Remove the other two languages' blocks (.en/.ru/.uz elements) so each URL
+   holds one language only: one H1, native text, no hidden copies for Google
+   to weigh against the visible page. Script/style contents are left alone. */
+const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
+function stripLangs(html, lang) {
+  const other = ['en', 'ru', 'uz'].filter((l) => l !== lang);
+  const masks = [];
+  html = html.replace(/<(script|style)\b[\s\S]*?<\/\1>/g, (m) => { masks.push(m); return `\u0000${masks.length - 1}\u0000`; });
+  const openRe = /<([a-zA-Z][\w-]*)\b[^>]*\bclass="([^"]*)"[^>]*>/g;
+  let m;
+  while ((m = openRe.exec(html))) {
+    if (!m[2].split(/\s+/).some((c) => other.includes(c))) continue;
+    const tag = m[1].toLowerCase();
+    let end = m.index + m[0].length;
+    if (!VOID.has(tag) && !m[0].endsWith('/>')) {
+      const re = new RegExp(`<(/?)${tag}\\b[^>]*>`, 'gi');
+      re.lastIndex = end;
+      let depth = 1, t;
+      while (depth && (t = re.exec(html))) { if (t[1]) depth--; else if (!t[0].endsWith('/>')) depth++; }
+      if (depth) throw new Error(`stripLangs: unclosed <${tag}> near ${html.slice(m.index, m.index + 80)}`);
+      end = re.lastIndex;
+    }
+    // Drop the whole line when the element was alone on it.
+    let s = m.index, e = end;
+    const ls = html.lastIndexOf('\n', s - 1) + 1, le = html.indexOf('\n', e);
+    if (/^[ \t]*$/.test(html.slice(ls, s)) && /^[ \t]*$/.test(html.slice(e, le < 0 ? html.length : le))) {
+      s = ls; e = le < 0 ? html.length : le + 1;
+    }
+    html = html.slice(0, s) + html.slice(e);
+    openRe.lastIndex = s;
+  }
+  return html.replace(/\u0000(\d+)\u0000/g, (_, i) => masks[+i]);
+}
+
+/* Share links for articles: plain links, no third-party scripts. */
+const SHARE_TXT = {
+  en: { label: 'Share this article', copy: 'Copy link', done: 'Copied' },
+  ru: { label: 'Поделиться статьёй', copy: 'Скопировать ссылку', done: 'Скопировано' },
+  uz: { label: 'Maqolani ulashish', copy: 'Havolani nusxalash', done: 'Nusxalandi' },
+};
+function shareBar(url, title, lang) {
+  const u = encodeURIComponent(url), t = encodeURIComponent(title);
+  const s = SHARE_TXT[lang];
+  const ga = (method) => `if(window.gtag)gtag('event','share',{method:'${method}',content_type:'article'})`;
+  const link = (method, label, href) =>
+    `<a class="share-btn share-${method}" href="${href}" target="_blank" rel="noopener" onclick="${ga(method)}">${label}</a>`;
+  return `        <div class="share-bar">
+          <span class="share-label">${s.label}</span>
+          ${link('telegram', 'Telegram', `https://t.me/share/url?url=${u}&amp;text=${t}`)}
+          ${link('whatsapp', 'WhatsApp', `https://wa.me/?text=${t}%20${u}`)}
+          ${link('linkedin', 'LinkedIn', `https://www.linkedin.com/sharing/share-offsite/?url=${u}`)}
+          ${link('facebook', 'Facebook', `https://www.facebook.com/sharer/sharer.php?u=${u}`)}
+          <button type="button" class="share-btn share-copy" onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText('${url}');this.textContent='${s.done}';${ga('copy')}">${s.copy}</button>
+        </div>
+`;
 }
 
 /* ── Per-page SEO metadata, keyword-heavy, weighted to large &
@@ -273,7 +333,8 @@ function buildHome(lang) {
 
 /* ── Service page generation ──────────────────────────────────── */
 function buildService(pageKey, lang) {
-  let html = read(pageKey);
+  let html = read(SRC + pageKey);
+  const pre = lang === 'en' ? '' : `/${lang}`;
 
   html = html.replace(/<html lang="[^"]*">/, `<html lang="${lang}">`);
   html = html.replace(/<body data-lang="[^"]*">/, `<body data-lang="${lang}">`);
@@ -281,9 +342,9 @@ function buildService(pageKey, lang) {
 
   // Path fixes: pages move from /services/ to /<lang>/services/.
   html = html.replace(/\b(href|src)="\.\.\//g, '$1="/');   // ../x -> /x (root assets, blog, home)
-  html = html.replace(/\bhref="\/#/g, `href="/${lang}/#`); // home anchors -> language home
-  html = html.replace(/\bhref="\/"/g, `href="/${lang}/"`); // bare home link -> language home
-  html = html.replace(/\bhref="\/blog\//g, `href="/${lang}/blog/`); // blog -> language blog
+  html = html.replace(/\bhref="\/#/g, `href="${pre}/#`); // home anchors -> language home
+  html = html.replace(/\bhref="\/"/g, `href="${pre}/"`); // bare home link -> language home
+  html = html.replace(/\bhref="\/blog\//g, `href="${pre}/blog/`); // blog -> language blog
   // Sibling service links (no ../) stay relative and resolve within /<lang>/services/.
 
   // Translate the nav/footer chrome (data-i18n keys) into this language.
@@ -306,7 +367,7 @@ function buildService(pageKey, lang) {
 </script>
 </body>`);
 
-  return html;
+  return stripLangs(html, lang);
 }
 
 /* ── Blog generation ──────────────────────────────────────────────
@@ -399,22 +460,40 @@ function blogHead(html, post, lang) {
 }
 
 function buildBlog(post, lang) {
-  let html = read(post.path);
+  let html = read(SRC + post.path);
+  const pre = lang === 'en' ? '' : `/${lang}`;
   html = html.replace(/<html lang="[^"]*">/, `<html lang="${lang}">`);
   html = html.replace(/<body data-lang="[^"]*">/, `<body data-lang="${lang}">`);
   html = blogHead(html, post, lang);
 
   html = html.replace(/\b(href|src)="\.\.\//g, '$1="/');                   // ../x -> /x
-  html = html.replace(/\bhref="\/#/g, `href="/${lang}/#`);
-  html = html.replace(/\bhref="\/"/g, `href="/${lang}/"`);
-  html = html.replace(/\bhref="\/services\//g, `href="/${lang}/services/`);
-  html = html.replace(/\bhref="\/blog\//g, `href="/${lang}/blog/`);
+  html = html.replace(/\bhref="\/#/g, `href="${pre}/#`);
+  html = html.replace(/\bhref="\/"/g, `href="${pre}/"`);
+  html = html.replace(/\bhref="\/services\//g, `href="${pre}/services/`);
+  html = html.replace(/\bhref="\/blog\//g, `href="${pre}/blog/`);
+
+  // Structured data describes this language version only.
+  const url = blogUrls(post)[lang];
+  html = html.replace(/"inLanguage": \[[^\]]*\]/, `"inLanguage": "${lang}"`);
+  html = html.replace(/("mainEntityOfPage": )"[^"]*"/, `$1"${url}"`);
+  if (lang !== 'en') {
+    html = html.replace(/("headline": )"[^"]*"/, `$1${JSON.stringify(post[lang].title.replace(/ \| Dynamic Audit$/, ''))}`);
+  }
 
   // Highlight this page's language in every switcher (nav, article bar, footer).
   html = html.replace(/(class="(?:blog-)?lang-btn) active"/g, '$1"');
   html = html.replace(new RegExp(`(class="(?:blog-)?lang-btn)"( onclick="daSwitchLang\\('${lang}'\\)")`, 'g'), '$1 active"$2');
 
-  return bakeBody(html, lang);
+  html = stripLangs(bakeBody(html, lang), lang);
+
+  // Share links on articles (not on the listing page).
+  if (!post.path.endsWith('/index.html')) {
+    const title = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [, ''])[1].replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').trim();
+    const bar = shareBar(url, title, lang);
+    if (html.includes('<div class="blog-cta-box">')) html = html.replace(/([ \t]*)<div class="blog-cta-box">/, `${bar}$1<div class="blog-cta-box">`);
+    else html = html.replace(/(\r?\n[ \t]*<\/article>)/, `\n${bar}$1`);
+  }
+  return html;
 }
 
 /* Update the English source pages in place: expanded keywords/meta and
@@ -432,24 +511,23 @@ function updateEnglish(pageKey) {
 /* ── Run ──────────────────────────────────────────────────────── */
 const services = Object.keys(META).filter((k) => k !== 'home');
 let count = 0;
-for (const lang of ['ru', 'uz']) {
-  write(`${lang}/index.html`, buildHome(lang));
-  count++;
+for (const lang of ['en', 'ru', 'uz']) {
+  const pre = lang === 'en' ? '' : `${lang}/`;
+  if (lang !== 'en') { write(`${lang}/index.html`, buildHome(lang)); count++; }
   for (const svc of services) {
-    write(`${lang}/${svc}`, buildService(svc, lang));
+    write(pre + svc, buildService(svc, lang));
     count++;
   }
   for (const post of BLOG_POSTS) {
-    write(`${lang}/${post.path}`, buildBlog(post, lang));
+    write(pre + post.path, buildBlog(post, lang));
     count++;
   }
 }
-for (const key of ['home', ...services]) updateEnglish(key);
-for (const post of BLOG_POSTS) write(post.path, blogHead(read(post.path), post, 'en'));
+updateEnglish('home');
 
 /* ── sitemap.xml with per-language hreflang alternates ────────── */
 function buildSitemap() {
-  const LASTMOD = '2026-10-14';
+  const LASTMOD = '2026-11-11';
   const entries = [];
   const pushEntry = (canonPath, priority) => {
     const u = altBlock(canonPath);
@@ -480,4 +558,30 @@ function buildSitemap() {
 }
 buildSitemap();
 
-console.log(`Generated ${count} localized pages (ru + uz); updated ${services.length + 1} English pages; wrote sitemap.xml.`);
+/* ── _redirects: one-hop 301s from extensionless URLs to the .html ones ──
+   Netlify serves /x for x.html with a 200 by itself, so every page had two
+   addresses. Rules are listed per page (Netlify placeholders can't exclude
+   ".html", so a pattern like /services/:slug would also catch the targets).
+   "!" forces the rule even though Netlify would otherwise serve /x itself. */
+function buildRedirects() {
+  const lines = [];
+  const pages = [
+    ...services.map((s) => s.replace(/\.html$/, '')),
+    ...BLOG_POSTS.map((p) => p.path).filter((p) => !p.endsWith('/index.html')).map((p) => p.replace(/\.html$/, '')),
+  ];
+  for (const prefix of ['', '/ru', '/uz']) {
+    for (const p of pages) {
+      lines.push(`${prefix}/${p}   ${prefix}/${p}.html   301!`);
+      lines.push(`${prefix}/${p}/  ${prefix}/${p}.html   301!`);
+    }
+    lines.push(`${prefix}/blog   ${prefix}/blog/index.html   301!`);
+    lines.push(`${prefix}/blog/  ${prefix}/blog/index.html   301!`);
+    lines.push(`${prefix}/index.html   ${prefix}/   301!`);
+  }
+  // Authoring sources are in the deploy folder but must never be served.
+  lines.push('/_src/*   /404.html   404!');
+  write('_redirects', '# Generated by build.mjs; do not edit by hand.\n' + lines.join('\n') + '\n');
+}
+buildRedirects();
+
+console.log(`Generated ${count} pages (en/ru/uz service + blog pages, ru/uz homepages); wrote sitemap.xml and _redirects.`);

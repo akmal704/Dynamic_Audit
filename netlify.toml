@@ -1,0 +1,8 @@
+# The .html URLs are the official ones (canonical, hreflang, sitemap).
+# Netlify's "Pretty URLs" post-processing rewrote internal links to
+# extensionless paths at deploy time, so Google found every page twice.
+[build.processing]
+  skip_processing = true
+
+[build.processing.html]
+  pretty_urls = false
