@@ -339,6 +339,17 @@ const BLOG_POSTS = [
     },
   },
   {
+    path: 'blog/opoi-ifrs-transition-2027.html',
+    ru: {
+      title: 'ОПОИ и МСФО с 2027 года: чек-лист перехода | Dynamic Audit',
+      desc: 'Вы в реестре ОПОИ? С 1 января 2027 года — учёт по МСФО. Что сделать до конца 2026 года, план на 2027 год, МСФО (IFRS) 1 и частые ошибки.',
+    },
+    uz: {
+      title: "PIE reestri va MSFO 2027-yildan: o'tish cheklisti | Dynamic Audit",
+      desc: "PIE reestridamisiz? 2027-yil 1-yanvardan hisob MSFO asosida. 2026-yil oxirigacha nima qilish kerak, 2027-yil rejasi, MSFO (IFRS) 1 va keng tarqalgan xatolar.",
+    },
+  },
+  {
     path: 'blog/mandatory-audit-check.html',
     ru: {
       title: 'Нужен ли обязательный аудит? Проверка онлайн | Dynamic Audit',
